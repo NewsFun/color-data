@@ -1,0 +1,42 @@
+.content-wrapper {
+    width:1200px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.aticle-head {
+    height:100px;
+    background: #ccc;
+}
+
+.aticle-content {
+    over-flow:hidden;
+}
+
+.aticle-section {
+
+}
+
+.aticle-section-ico {
+    float:left;
+    width: 20%;
+}
+
+.aticle-section-content {
+    float:left;
+    width:80%;
+    border-left:1px solid #ccc;
+    margin-left:-1px;
+}
+
+.aticle-time {
+
+}
+
+.aticle-author {
+
+}
+
+.aticle-source {
+
+}
