@@ -1,0 +1,9 @@
+.home_bg{
+    height: 700px;
+    background: url("../img/h-bg.jpg") no-repeat top center;
+    background-size: 100% auto;
+    overflow: hidden;
+}
+.host{
+    height: 106px;
+}
