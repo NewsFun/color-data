@@ -2,15 +2,14 @@
 html{
     font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
     font-size: 16px;
+    color: #626262;
 }
-html,body,ul{
-    margin: 0;
-    padding: 0;
-}
+*{margin: 0;padding: 0;}
 a,button,input{cursor: pointer;}
 ul.unList{list-style: none;}
 .bg_white{background-color: #FFFFFF;}
 .color_white{color: #ffffff;}
+.font_14{font-size: 14px;}
 .fr{float: right;}
 .fl{float: left;}
 .img_full img{width: 100%;}
@@ -20,37 +19,74 @@ ul.unList{list-style: none;}
     content: "";
 }
 .w_1200{width: 1200px;margin: 0 auto;}
+.w_1000{width: 1000px;margin: 0 auto;}
+.w_800{width: 800px;margin: 0 auto;}
 /*智谷风格样式*/
-.zg .bg_lb{background-color: #e6f3ff;}
-.zg .bg_db{background-color: #2c3e50;}
-.zg .color_blue{color: #1d71b7;}
-.zg .color_db{color: #2c3e50;}
-.zg .title{
+.bg_lb{background-color: #e6f3ff;}
+.bg_db{background-color: #2c3e50;}
+.color_blue{color: #1d71b7;}
+.color_db{color: #2c3e50;}
+.title{
     font-weight: bold;
-    font-size: 18px;
-    color: #1d71b7;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: .2em;
 }
-.zg .header{padding-top: 40px;}
-.zg .header .w_1200{height: 58px;padding: 16px 0;}
-.zg .header .logo{
+.subtitle{
+    padding-top: 6px;
+    text-align: center;
+}
+.header{padding-top: 40px;}
+.header .w_1200{height: 58px;padding: 16px 0;}
+.header .logo{
     display: inline-block;
     float: left;
     width: 90px;
     height: 100%;
     overflow: hidden;
 }
-.zg .header .unList{display:inline-block;float: right;height: 100%;}
-.zg .header li{
+.header .unList{display:inline-block;float: right;height: 100%;}
+.header li{
     display: inline-block;
     height: 100%;
     width: 80px;
+    color: #2c3e50;
 }
-.zg .header li:hover{color: #1d71b7;}
-.zg .header li>a{
+.header li:hover{color: #1d71b7;}
+.header li>a{
     display: block;
     line-height: 58px;
     font-size: 14px;
     text-align: center;
     font-weight: bold;
 }
->>>>>>> 4982948b94bfa6028374df1a757a15fd0113a4c8
+.footer{padding: 40px 0 60px;position: relative;}
+.footer .h2{line-height: 1.5em;}
+.footer .line{
+    padding-top: 25px;
+    border-bottom: 1px solid #394c5f;
+    margin-bottom: 50px;
+}
+.footer .copyright{
+    margin-top: 20px;
+    text-align: center;
+    color: #7f91a2;
+    font-size: 14px;
+    line-height: 1.8em;
+}
+.footer .copyright a{padding: 0 4px;}
+.footer .copyright span{padding: 0 8px;}
+.footer .to_top{
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: url("../img/toTop.png") no-repeat top center;
+    bottom: 0;
+    left: 50%;
+    margin-left: -40px;
+}
+.footer .to_top a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
