@@ -4,14 +4,16 @@
 }
 .content-wrapper {
     width:1200px;
+    overflow: hidden;
     margin:55px auto 35px;
+    font-size: 16px;
 }
 
 .aticle-head {
     height:100px;
-    background: #ccc;
+    background: #eee;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     line-height: 30px;
     overflow: hidden;
 }
@@ -22,29 +24,63 @@
 }
 
 .aticle-content {
-    over-flow:hidden;
+    overflow:hidden;
 }
-
 .aticle-section {
-
+    overflow: hidden;
+}
+.aticle-section ul:hover{
+    box-shadow: 0 0 20px #ccc
+}
+.aticle-section.even ul {
+    background-color: #efefef
 }
 
 .aticle-section-ico {
     float:left;
     width: 20%;
-    padding-top: 180px;
+    height:150px;
+    padding-top: 330px;
     text-align: center;
-    background: url('../img/congrass-ico-1.png') center 20px no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+
 }
+.aticle-section-ico-1 {
+    background-image: url('../img/congrass-ico-1.png');
+}
+.aticle-section-ico-2 {
+    background-image: url('../img/congrass-ico-2.png');
+}
+.aticle-section-ico-3 {
+    background-image: url('../img/congrass-ico-3.png');
+}
+.aticle-section-ico-4 {
+    background-image: url('../img/congrass-ico-4.png');
+}
+.aticle-section-ico-5 {
+    background-image: url('../img/congrass-ico-5.png');
+}
+.aticle-section-ico-6 {
+    background-image: url('../img/congrass-ico-6.png');
+}
+.aticle-section-ico-7 {
+    background-image: url('../img/congrass-ico-7.png');
+}
+
+
 
 .aticle-section-content {
     float:left;
     width:80%;
-    margin-left:-1px;
-    border-left:1px solid #ccc;
+    margin-left:-2px;
+    border-left:1px solid #e9e9e9;
+    border-right:1px solid #e9e9e9;
+    border-top: 1px solid #e9e9e9;
+    margin-bottom:20px;
 }
 .aticle-section-content li{
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid #e9e9e9;
     padding:50px;
     overflow: hidden;
 }
@@ -73,24 +109,34 @@
     margin-bottom:15px;
     letter-spacing: 0.1em;
 }
+.aticle-section-content li > h3 >a {
+    color:#333;
+    text-decoration: none;
+}
 .aticle-section-content li > p,
-.aticle-section-content li > div.aticle-info
+div.aticle-info
  {
-    color:#999;
+    color:#666;
     line-height: 1.5;
     letter-spacing: 0.1em;
 }
 .aticle-section-content li > p a{
-    color:#f00;
+    color:#ee9966;
     padding:0.5em;
     font-size: 0.8em;
     text-decoration: none;
+    transition: all 0.5s;
+}
+.aticle-section-content li > p a:hover{
+    color:#ff3333;
 }
 .aticle-section-content li > p a:hover{
     text-decoration: underline;
 }
 .aticle-section-content li > div.aticle-info{
+    font-size: 0.8em;
     text-align:right;
+    color:999999;
 }
 
 .aticle-time {
