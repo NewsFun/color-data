@@ -16,6 +16,117 @@
     height: 100%;
     width: 700px;
     margin: 0 auto;
-    line-height: 24px;
+    line-height: 1.5em;
 }
 .host_name .h1{padding-top: 16px;}
+.list{padding: 40px 0;}
+.mt_50{margin-top: 40px;}
+.paragraph{padding: 10px 0;line-height: 1.5em;}
+.guest .mt_50{padding: 30px 0;}
+.guest li{
+    display: inline-block;
+    float: left;
+    width: 16.66666666%;
+    height: auto;
+}
+.guest_box{
+    background-color: #eeeeee;
+    padding: 6px;
+    width: 266px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.guest_box .img_full{
+    width: 100%;
+    height: 196px;
+    overflow: hidden;
+}
+.intro_box{
+    width: 92%;
+    padding: 0 4% 6px;
+    height: 54px;
+    overflow: hidden;
+}
+.guest_name{margin: 4px 0;}
+.guest_msg{
+    height: 19px;
+    font-size: 14px;
+    overflow: hidden;
+}
+.on .guest_box{
+    background-color: #1d71b7;
+    margin-top: -16px;
+}
+.on .img_full{background-color: #000000;height: 212px;}
+.on .intro_box{
+    background-color: #2c3e50;
+    color: white;
+}
+.on .guest_msg,.on .guest_box,.on .intro_box{height: auto;}
+
+.forum{
+    height: 458px;
+    background: url("../img/h-bg2.jpg") no-repeat top center;
+    background-size: 100% auto;
+    color: white;
+}
+.forum .unfix{margin-top: 100px;}
+.forum li{
+    display: inline-block;
+    float: left;
+    width: 171px;
+}
+.forum_icon{
+    width: 149px;
+    height: 204px;
+    margin: 0 auto;
+    /*background: url("../img/h-bg3.png")no-repeat top center;*/
+}
+.forum .pi{background: url("../img/h-bg3.png")no-repeat 0 0;}
+.forum .sf{background: url("../img/h-bg3.png")no-repeat -166px 0;}
+.forum .id{background: url("../img/h-bg3.png")no-repeat -332px 0;}
+.forum .ci{background: url("../img/h-bg3.png")no-repeat -498px 0;}
+.forum .pr{background: url("../img/h-bg3.png")no-repeat -666px 0;}
+.forum .ds{background: url("../img/h-bg3.png")no-repeat -832px 0;}
+.forum .rt{background: url("../img/h-bg3.png")no-repeat -998px 0;}
+.forum .pi:hover{background: url("../img/h-bg4.png")no-repeat 0 0;}
+.forum .sf:hover{background: url("../img/h-bg4.png")no-repeat -166px 0;}
+.forum .id:hover{background: url("../img/h-bg4.png")no-repeat -332px 0;}
+.forum .ci:hover{background: url("../img/h-bg4.png")no-repeat -498px 0;}
+.forum .pr:hover{background: url("../img/h-bg4.png")no-repeat -666px 0;}
+.forum .ds:hover{background: url("../img/h-bg4.png")no-repeat -832px 0;}
+.forum .rt:hover{background: url("../img/h-bg4.png")no-repeat -998px 0;}
+/**/
+.sign li{
+    display: inline-block;
+    float: left;
+    width: 50%;
+    padding: 50px 0;
+}
+.sign_box{
+    width: 475px;
+    height: 165px;
+    margin: 0 auto;
+    background: url("../img/h-bg5.png")no-repeat center;
+}
+.sign_box .unfix{padding: 30px 27px 45px;}
+.sign_box .half_l{
+    display: inline-block;
+    float: left;
+    width: 200px;
+    height: 90px;
+    position: relative;
+}
+.sign_box .half_r{
+    display: inline-block;
+    float: right;
+    width: 90px;
+    height: 90px;
+}
+.sign_box .top{font-size: 15px;}
+.sign_box .btm{position: absolute;bottom: 0;}
+.sign_box .btn{background: url("../img/h-bg6.jpg") no-repeat center;}
+.sign_box .QR_code{  background: url("../img/h-qrcode.jpg")no-repeat center;background-size: 100% 100%;}
+.sign_box .font_14{color: #b2b2b2;}
