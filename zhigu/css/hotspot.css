@@ -1,152 +1,174 @@
-*{
-    padding:0;
-    margin:0;
-}
 .content-wrapper {
-    width:1200px;
-    overflow: hidden;
-    margin:55px auto 35px;
+    overflow : hidden;
+    margin   : 55px auto 35px;
+    width    : 1200px;
     font-size: 16px;
 }
 
 .aticle-head {
-    height:100px;
-    background: #eee;
-    text-align: center;
+    overflow     : hidden;
     margin-bottom: 30px;
-    line-height: 30px;
-    overflow: hidden;
+    height       : 100px;
+    background   : #eee;
+    text-align   : center;
+    line-height  : 30px;
 }
 
 .aticle-head h1 {
     margin-top: 25px;
-    font-size: 25px;
+    font-size : 25px;
 }
 
 .aticle-content {
-    overflow:hidden;
+    overflow: hidden;
 }
+
 .aticle-section {
     overflow: hidden;
 }
-.aticle-section ul:hover{
-    box-shadow: 0 0 20px #ccc
+
+.aticle-section ul:hover {
+
 }
+
 .aticle-section.even ul {
-    background-color: #efefef
+    background-color: #eee;
 }
 
 .aticle-section-ico {
-    float:left;
-    width: 20%;
-    height:150px;
-    padding-top: 330px;
-    text-align: center;
+    float              : left;
+    padding-top        : 330px;
+    width              : 20%;
+    height             : 150px;
     background-position: center center;
-    background-repeat: no-repeat;
-
+    background-repeat  : no-repeat;
+    text-align         : center;
 }
-.aticle-section-ico-1 {
-    background-image: url('../img/congrass-ico-1.png');
-}
-.aticle-section-ico-2 {
-    background-image: url('../img/congrass-ico-2.png');
-}
-.aticle-section-ico-3 {
-    background-image: url('../img/congrass-ico-3.png');
-}
-.aticle-section-ico-4 {
-    background-image: url('../img/congrass-ico-4.png');
-}
-.aticle-section-ico-5 {
-    background-image: url('../img/congrass-ico-5.png');
-}
-.aticle-section-ico-6 {
-    background-image: url('../img/congrass-ico-6.png');
-}
-.aticle-section-ico-7 {
-    background-image: url('../img/congrass-ico-7.png');
-}
-
-
-
-.aticle-section-content {
-    float:left;
-    width:80%;
-    margin-left:-2px;
-    border-left:1px solid #e9e9e9;
-    border-right:1px solid #e9e9e9;
-    border-top: 1px solid #e9e9e9;
-    margin-bottom:20px;
-}
-.aticle-section-content li{
-    border-bottom:1px solid #e9e9e9;
-    padding:50px;
-    overflow: hidden;
-}
-.aticle-section-content li > div.aticle-img{
-    float: left;
-    width: 180px;
-    height:140px;
-    overflow: hidden;
-    background: #ccc;
-    margin-right:33px;
-    position:relative;
-}
-.aticle-section-content li > div.aticle-img img {
-    display: block;
-    width:100%;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-.aticle-section-content li > h3{
+.aticle-section-ico h2{
+    font-weight: bold;
     font-size: 20px;
     line-height: 30px;
-    font-weight: bold;
-    margin-bottom:15px;
-    letter-spacing: 0.1em;
 }
-.aticle-section-content li > h3 >a {
-    color:#333;
+.aticle-section-ico-1 {
+    background-image: url("../img/congrass-ico-1.png");
+}
+
+.aticle-section-ico-2 {
+    background-image: url("../img/congrass-ico-2.png");
+}
+
+.aticle-section-ico-3 {
+    background-image: url("../img/congrass-ico-3.png");
+}
+
+.aticle-section-ico-4 {
+    background-image: url("../img/congrass-ico-4.png");
+}
+
+.aticle-section-ico-5 {
+    background-image: url("../img/congrass-ico-5.png");
+}
+
+.aticle-section-ico-6 {
+    background-image: url("../img/congrass-ico-6.png");
+}
+
+.aticle-section-ico-7 {
+    background-image: url("../img/congrass-ico-7.png");
+}
+
+.aticle-section-content {
+    position:relative;
+    float        : left;
+    margin-bottom: 20px;
+    margin-left  : -2px;
+    width        : 80%;
+    height: 522px;
+    border       : 1px solid #ccc;
+    overflow: auto;
+}
+.aticle-section-content:hover{
+    box-shadow: -10px 10px 30px #ccc;
+}
+
+
+.aticle-section-content li {
+    overflow     : hidden;
+    padding      : 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.aticle-section-content li > div.aticle-img {
+    position    : relative;
+    float       : left;
+    overflow    : hidden;
+    margin-right: 33px;
+    width       : 180px;
+    height      : 140px;
+    background  : #ccc;
+}
+
+.aticle-section-content li > div.aticle-img img {
+    position     : absolute;
+    top          : 0;
+    bottom       : 0;
+    display      : block;
+    margin-top   : auto;
+    margin-bottom: auto;
+    width        : 100%;
+}
+
+.aticle-section-content li > h3 {
+    margin-bottom : 15px;
+    letter-spacing: 0.1em;
+    font-weight   : bold;
+    font-size     : 20px;
+    line-height   : 30px;
+}
+
+.aticle-section-content li > h3 > a {
+    color          : #333;
     text-decoration: none;
 }
+
 .aticle-section-content li > p,
-div.aticle-info
- {
-    color:#666;
-    line-height: 1.5;
+div.aticle-info {
+    color         : #666;
     letter-spacing: 0.1em;
+    line-height   : 1.5;
 }
-.aticle-section-content li > p a{
-    color:#ee9966;
-    padding:0.5em;
-    font-size: 0.8em;
+
+.aticle-section-content li > p a {
+    padding        : 0.5em;
+    color          : #e96;
     text-decoration: none;
-    transition: all 0.5s;
+    font-size      : 0.8em;
+    transition     : all 0.5s;
 }
-.aticle-section-content li > p a:hover{
-    color:#ff3333;
+
+.aticle-section-content li > p a:hover {
+    color: #f33;
 }
-.aticle-section-content li > p a:hover{
+
+.aticle-section-content li > p a:hover {
     text-decoration: underline;
 }
-.aticle-section-content li > div.aticle-info{
-    font-size: 0.8em;
-    text-align:right;
-    color:999999;
+
+.aticle-section-content li > div.aticle-info {
+    color     : 999999;
+    text-align: right;
+    font-size : 0.8em;
 }
 
-.aticle-time {
-
+.aticle-section-content .btn-more{
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #fff;
 }
-
-.aticle-author {
-
-}
-
-.aticle-source {
-
+.aticle-section-content .btn-more:hover{
+    background: #ccc;
 }

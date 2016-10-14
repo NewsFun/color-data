@@ -1,20 +1,25 @@
-div.aticle-info
- {
-    color:#666;
-    line-height: 1.5;
+div.aticle-info {
+    color         : #666;
     letter-spacing: 0.1em;
+    line-height   : 1.5;
 }
-.aticle-section{
+
+.aticle-section {
     margin-bottom: 30px;
 }
-.aticle-section img{
-    width:100%;
+
+.aticle-section img {
+    width: 100%;
 }
+
 .aticle-section p {
+    color      : #333;
+
     line-height: 1.5;
-    color:#333;
 }
-.aticle-section .aticle-info{
-    text-align: right;
+
+.aticle-section .aticle-info {
     padding-top: 2em;
+
+    text-align : right;
 }
