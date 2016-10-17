@@ -33,4 +33,15 @@
     line-height: 1.5em;
     overflow: hidden;
 }
+.guest_name .icon{
+    display: block;
+    float: right;
+    width: 17px;
+    height: 10px;
+    background: url("../img/h-icon4.png")no-repeat center;
+    margin-top: 8px;
+}
+.guest_name .icon.close{
+    background: url("../img/h-icon5.png")no-repeat center;
+}
 .on .guest_box{background-color: #1d71b7;}
