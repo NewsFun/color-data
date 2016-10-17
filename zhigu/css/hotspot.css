@@ -82,7 +82,7 @@
     margin-bottom: 20px;
     margin-left  : -2px;
     width        : 80%;
-    height: 522px;
+    height: 540px;
     border       : 1px solid #ccc;
     overflow: auto;
 }
@@ -92,6 +92,7 @@
 
 
 .aticle-section-content li {
+    height:149px;
     overflow     : hidden;
     padding      : 50px;
     border-bottom: 1px solid #ccc;
@@ -118,11 +119,14 @@
 }
 
 .aticle-section-content li > h3 {
+    max-height:60px;
     margin-bottom : 15px;
     letter-spacing: 0.1em;
     font-weight   : bold;
     font-size     : 20px;
     line-height   : 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .aticle-section-content li > h3 > a {
@@ -135,6 +139,12 @@ div.aticle-info {
     color         : #666;
     letter-spacing: 0.1em;
     line-height   : 1.5;
+}
+.aticle-section-content li > p{
+        font-size: 16px;
+    max-height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .aticle-section-content li > p a {
@@ -154,19 +164,21 @@ div.aticle-info {
 }
 
 .aticle-section-content li > div.aticle-info {
-    color     : 999999;
+    margin-top: 5px;
+    color     : #aaa;
     text-align: right;
     font-size : 0.8em;
 }
 
 .aticle-section-content .btn-more{
+    margin-top: -1px;
     display: block;
     text-align: center;
-    line-height: 40px;
+    line-height: 41px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    background: #fff;
+    transition: all 0.5s;
 }
 .aticle-section-content .btn-more:hover{
     background: #ccc;
