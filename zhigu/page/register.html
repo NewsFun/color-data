@@ -4,51 +4,53 @@
     <!--#include virtual="./include/head.html"-->
     <title>智谷大会-注册</title>
     <link rel="stylesheet" href="../css/register.css">
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/register.js"></script>
 </head>
 <body>
 <!--#include virtual="./include/header.html"-->
 <div class="register bg_lb">
 	<div class="w_1200">
-		<div class="head bg_db">
+		<div class="top_head bg_db">
 			<div class="title color_blue">参会注册</div>
 			<p class="subtitle">Register</p>
 		</div>
 		<div class="bg_white">
-			<form class="form">
+			<form id="register" class="form" action="">
 				<ul class="unList">
 					<li>
 					<div class="border unfix">
 						<div class="num_left">+86</div>
-						<div class="num_right"><input type="text" name="name" value="请输入手机号码"></div>
+						<div class="num_right"><input id="phone" type="text" name="phone" value="请输入手机号码"></div>
 					</div>
 					</li>
 					<li class="unfix">
-						<div class="left_box"><input class="full" type="text" name="name" value="图形验证码"></div>
+						<div class="left_box"><input id="img_code" class="full" type="text" name="img_code" value="图形验证码"></div>
 						<div class="right_box reg_img">
                             <a>换一张</a>
                             <div class="img_full"><img src="../img/h-icon3.jpg"></div>
                         </div>
 					</li>
 					<li class="unfix">
-						<div class="left_box"><input class="full" type="text" name="name" value="短信验证码"></div>
+						<div class="left_box"><input id="phone_code" class="full" type="text" name="phone_code" value="短信验证码"></div>
 						<div class="right_box bg_db"><a><span class="color_white">获取短信验证码</span></a></div>
 					</li>
 					<li class="pwd_box">
-						<div class="pwd"><input class="full" type="text" name="pwd" value="设置密码"></div>
+						<div class="pwd"><input id="pwd" class="full" type="text" name="pwd" value="设置密码"></div>
 						<div class="pwd_len"><span>低</span><span>中</span><span>高</span></div>
 					</li>
-					<li><input class="full" type="text" name="name" value="姓名"></li>
-					<li><input class="full" type="text" name="firm" value="公司"></li>
-					<li><input class="full" type="text" name="job" value="职务"></li>
-					<li><input class="full" type="text" name="tel" value="联系电话"></li>
-					<li><input class="full" type="text" name="num" value="参会人数"></li>
+					<li><input class="full" type="text" id="name" name="name" value="姓名" required><div class="req_icon">*</div></li>
+					<li><input class="full" type="text" id="firm" name="firm" value="公司" required><div class="req_icon">*</div></li>
+					<li><input class="full" type="text" id="job" name="job" value="职务"></li>
+					<li><input class="full" type="text" id="tel" name="tel" value="联系电话" required><div class="req_icon">*</div></li>
+					<li><input class="full" type="text" id="num" name="num" value="参会人数"></li>
 					<li>
 						<div class="border">
-							<select>
+							<select id="select">
 								<option>选择参加的论坛</option>
-								<option></option>
-								<option></option>
-								<option></option>
+								<option id="topic_2" name="topic[]"></option>
+								<option id="topic_3" name="topic[]"></option>
+								<option id="topic_4" name="topic[]"></option>
 							</select>
 						</div>
 					</li>

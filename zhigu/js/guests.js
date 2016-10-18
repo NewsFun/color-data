@@ -31,7 +31,6 @@ $(document).ready(function(){
                     $(this).addClass('close');
                     $(this).parents('.intro_box').find('.guest_msg').css('height','auto');
                 }
-
             });
         }
     };

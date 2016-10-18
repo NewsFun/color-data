@@ -1,7 +1,8 @@
+.top_head{margin-bottom: 30px;}
 div.aticle-info {
-    color         : #666;
+    color: #666;
     letter-spacing: 0.1em;
-    line-height   : 1.5;
+    line-height: 1.5;
 }
 
 .aticle-section {
@@ -13,13 +14,10 @@ div.aticle-info {
 }
 
 .aticle-section p {
-    color      : #333;
-
+    color: #333;
     line-height: 1.5;
 }
-
 .aticle-section .aticle-info {
     padding-top: 2em;
-
     text-align : right;
 }
