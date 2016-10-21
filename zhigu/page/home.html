@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <title>智谷大会</title>
     <!--#include virtual="./include/head.html"-->
+    <title>智谷大会</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <script src="../js/guests.js"></script>
+    <script src="../js/swiper-3.3.1.jquery.min.js"></script>
 </head>
 <body>
 <!--#include virtual="./include/header.html"-->
 <div class="top">
-    <div class="home_bg">
-        <ul class="inline">
-            <li><a><div class="btn_video"><div class="btn_bg"><b>&nbsp;&nbsp;&nbsp;&nbsp;观看视频介绍</b></div></div></a></li>
-            <li><a target="_blank" href="register.html"><div class="btn_sign"><b>参会注册</b></div></a></li>
-        </ul>
+    <div class="swiper-container">
+        <div class="swiper-wrapper unfix">
+            <div class="swiper-slide">
+                <div class="home_bg h_bg1">
+                    <ul class="inline">
+                        <li><a><div class="btn_video"><div class="btn_bg"><b>&nbsp;&nbsp;&nbsp;&nbsp;观看视频介绍</b></div></div></a></li>
+                        <li><a target="_blank" href="register.html"><div class="btn_sign"><b>参会注册</b></div></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <a><div class="home_bg h_bg2"></div></a>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
     <div class="host">
         <div class="host_name">
@@ -203,6 +218,7 @@
         </ul>
     </div>
 </div>
+<!--<script src="../js/slide.js"></script>-->
 <!--#include virtual="./include/footer.html"-->
 </body>
 </html>

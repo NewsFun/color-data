@@ -37,11 +37,11 @@
     float: right;
     width: 17px;
     height: 10px;
-    background: url("../img/h-icon4.png")no-repeat center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-icon4.png")no-repeat center;
     margin-top: 8px;
     cursor: pointer;
 }
 .guest_name .icon.close{
-    background: url("../img/h-icon5.png")no-repeat center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-icon5.png")no-repeat center;
 }
 .on .guest_box{background-color: #1d71b7;}

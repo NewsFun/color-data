@@ -7,6 +7,7 @@ html{
 body{min-width: 1200px;}
 *{margin: 0;padding: 0;}
 a,button,input{cursor: pointer;}
+img {border: none;}
 a{text-decoration: none;}
 ul.unList{list-style: none;}
 ul.inline{list-style: none;display: block;}
@@ -30,6 +31,7 @@ ul.inline li{
     display: table;
     content: "";
 }
+.unopened{cursor: not-allowed;}
 .w_1200{width: 1200px;margin: 0 auto;}
 .w_1000{width: 1000px;margin: 0 auto;}
 .w_800{width: 800px;margin: 0 auto;}
@@ -93,7 +95,7 @@ ul.inline li{
     position: absolute;
     width: 80px;
     height: 40px;
-    background: url("../img/toTop.png") no-repeat top center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/toTop.png") no-repeat top center;
     bottom: 0;
     left: 50%;
     margin-left: -40px;

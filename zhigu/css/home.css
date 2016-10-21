@@ -1,13 +1,13 @@
 .h1{font-size: 18px;font-weight: bold;color: #9fb0c0;}
 .home_bg{
-    height: 700px;
-    background: url("../img/h-bg.jpg") no-repeat top center;
-    background-size: 100% 100%;
+    height: 690px;
     overflow: hidden;
 }
+.h_bg2{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg02.jpg") no-repeat top center;background-size: 100% auto;}
+.h_bg1{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg.jpg") no-repeat top center;background-size: 100% auto;}
 .top .inline{width: 520px;height: 60px;margin: 0 auto;padding-top: 460px;}
 .top .inline li{width: 50%;height: 100%;}
-.top .btn_bg{background: url("../img/h-icon1.png")no-repeat center left;margin-left: 16px;}
+.top .btn_bg{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-icon1.png")no-repeat center left;margin-left: 16px;}
 .top .btn_video{
     background-color: #1d71b7;
     width: 220px;
@@ -29,7 +29,7 @@
 }
 .host{
     height: 105px;
-    background: url("../img/h-host.png") no-repeat top center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-host.png") no-repeat top center;
     background-size: 100% 100%;
 }
 .host_name{
@@ -45,7 +45,7 @@
     top: 18px;
     width: 22px;
     height: 22px;
-    background: url("../img/h-icon2.png")no-repeat center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-icon2.png")no-repeat center;
 }
 .host_name .h1{padding-top: 16px;}
 .list{padding: 40px 0;}
@@ -82,11 +82,11 @@
     float: right;
     width: 17px;
     height: 10px;
-    background: url("../img/h-icon4.png")no-repeat center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-icon4.png")no-repeat center;
     margin-top: 8px;
 }
 .guest_name .icon.close{
-    background: url("../img/h-icon5.png")no-repeat center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-icon5.png")no-repeat center;
 }
 .guest_msg{
     height: 19px;
@@ -103,7 +103,7 @@
 /**/
 .forum{
     height: 458px;
-    background: url("../img/h-bg2.jpg") no-repeat top center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg2.jpg") no-repeat top center;
     background-size: 100% 100%;
     color: white;
 }
@@ -118,20 +118,20 @@
     height: 204px;
     margin: 0 auto;
 }
-.forum .pi{background: url("../img/h-bg3.png")no-repeat 0 0;}
-.forum .sf{background: url("../img/h-bg3.png")no-repeat -166px 0;}
-.forum .id{background: url("../img/h-bg3.png")no-repeat -332px 0;}
-.forum .ci{background: url("../img/h-bg3.png")no-repeat -498px 0;}
-.forum .pr{background: url("../img/h-bg3.png")no-repeat -666px 0;}
-.forum .ds{background: url("../img/h-bg3.png")no-repeat -832px 0;}
-.forum .rt{background: url("../img/h-bg3.png")no-repeat -998px 0;}
-.forum .pi:hover{background: url("../img/h-bg4.png")no-repeat 0 0;}
-.forum .sf:hover{background: url("../img/h-bg4.png")no-repeat -166px 0;}
-.forum .id:hover{background: url("../img/h-bg4.png")no-repeat -332px 0;}
-.forum .ci:hover{background: url("../img/h-bg4.png")no-repeat -498px 0;}
-.forum .pr:hover{background: url("../img/h-bg4.png")no-repeat -666px 0;}
-.forum .ds:hover{background: url("../img/h-bg4.png")no-repeat -832px 0;}
-.forum .rt:hover{background: url("../img/h-bg4.png")no-repeat -998px 0;}
+.forum .pi{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat 0 0;}
+.forum .sf{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat -166px 0;}
+.forum .id{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat -332px 0;}
+.forum .ci{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat -498px 0;}
+.forum .pr{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat -666px 0;}
+.forum .ds{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat -832px 0;}
+.forum .rt{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg3.png")no-repeat -998px 0;}
+.forum .pi:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat 0 0;}
+.forum .sf:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat -166px 0;}
+.forum .id:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat -332px 0;}
+.forum .ci:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat -498px 0;}
+.forum .pr:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat -666px 0;}
+.forum .ds:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat -832px 0;}
+.forum .rt:hover{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg4.png")no-repeat -998px 0;}
 /**/
 .sign li{
     display: inline-block;
@@ -143,7 +143,7 @@
     width: 475px;
     height: 165px;
     margin: 0 auto;
-    background: url("../img/h-bg5.png")no-repeat center;
+    background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg5.png")no-repeat center;
 }
 .sign_box .unfix{padding: 30px 27px 45px;}
 .sign_box .half_l{
@@ -161,8 +161,8 @@
 }
 .sign_box .top{font-size: 15px;}
 .sign_box .btm{position: absolute;bottom: 0;}
-.sign_box .btn{background: url("../img/h-bg6.jpg") no-repeat center;}
-.sign_box .QR_code{  background: url("../img/h-qrcode.jpg")no-repeat center;background-size: 100% 100%;}
+.sign_box .btn{background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg6.jpg") no-repeat center;}
+.sign_box .QR_code{  background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-qrcode.jpg")no-repeat center;background-size: 100% 100%;}
 .sign_box .font_14{color: #b2b2b2;}
 /**/
 .media_r{border-bottom: 1px solid #394c5f;}
@@ -170,7 +170,7 @@
 /**/
 .media .inline{margin-top: 50px;}
 .media li{width: 11.1111%;display: inline-block;float: left;}
-.media .icon{width: 110px;height: 52px;margin: 0 auto;background: url("../img/h-bg7.png")no-repeat center;}
+.media .icon{width: 110px;height: 52px;margin: 0 auto;background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg7.png")no-repeat center;}
 .media .sina{background-position: 0 0;}
 .media .ali{background-position: -120px 0;}
 .media .yahoo{background-position: -250px 0;}
@@ -180,3 +180,25 @@
 .media .ql{background-position: -762px 0;}
 .media .netease{background-position: -890px 0;}
 .media .qq{background-position: -1018px 0;}
+/*swiper*/
+/*
+
+.swiper-container{
+    position: relative;
+    height: 700px;
+    width: 100%;
+    overflow: hidden;
+}
+.swiper-button-next,.swiper-button-prev{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    margin-top: -40px;
+    cursor: pointer;
+}
+.swiper-button-next{right: 0;background: url("../img/swiper-button02.png")no-repeat center;}
+.swiper-button-prev{left: 0;background: url("../img/swiper-button01.png")no-repeat center;}
+.swiper-wrapper{width: 300%;}
+.swiper-slide{display: inline-block;float: left;}
+*/

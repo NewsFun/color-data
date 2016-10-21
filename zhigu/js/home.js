@@ -2,45 +2,22 @@
  * Created by Administrator on 2016/10/17.
  */
 $(document).ready(function(){
-    function Guests(){
-        this.box = $('#guests');
-        this.guests = $('#guests li');
+    function Home(){
         this.init = function(){
-            //this.initHeader();
-            //this.initFooter();
-            this.initHover();
-            this.initOpen();
+            this.initHeader();
+            this.initFooter();
         }
     }
-    Guests.prototype = {
-        initHover:function(){
-            var self = this;
-            self.guests.on('click',function(){
-                self.guests.each(function(){
-                    $(this).removeClass('on');
-                });
-                $(this).addClass('on');
-            });
-        },
-        initOpen:function(){
-            var self = this;
-            var icon = self.box.find('.icon');
-            icon.on('click', function(){
-                if($(this).hasClass('close')){
-                    $(this).removeClass('close');
-                    $(this).parents('.intro_box').find('.guest_msg').removeAttr('style');
-                }else{
-                    $(this).addClass('close');
-                    $(this).parents('.intro_box').find('.guest_msg').css('height','auto');
-                }
-            });
-        },
+    Home.prototype = {
         initHeader:function(){
             var header = '<div id="top" class="header bg_db"><div class="bg_white"><div class="w_1200 unfix"><div class="logo">' +
-                '<a href="http://www.xinhuanet.com"><img src="../img/logo.png"></a></div><ul class="inline">' +
-                '<li><a target="_blank" href="home.html">首页</a></li><li><a target="_blank" href="congress.html">大会简介</a></li>' +
-                '<li><a target="_blank" href="guests.html">拟邀嘉宾</a></li><li><a target="_blank" href="hotspot.html">论坛聚焦</a></li>' +
-                '<li><a target="_blank" href="register.html">参会注册</a></li><li><a target="_blank" href="register.html">媒体注册</a></li></ul></div></div></div>';
+                '<a href="http://www.xinhuanet.com"><img src="http://www.xinhuanet.com/video/xhsp/zgzgdh/img/logo.png"></a></div><ul class="inline">' +
+                '<li><a target="_blank" href="http://www.xinhuanet.com/video/xbsp/zgzgdh/index.htm">首页</a></li>' +
+                '<li><a target="_blank" href="http://www.xinhuanet.com/video/xbsp/zgzgdh/dhjj.htm">大会简介</a></li>' +
+                '<li><a target="_blank" href="http://www.xinhuanet.com/video/xbsp/zgzgdh/nyjb.htm">拟邀嘉宾</a></li>' +
+                '<li><a target="_blank" href="http://www.xinhuanet.com/video/xbsp/zgzgdh/ltjj.htm">论坛聚焦</a></li>' +
+                '<li><a target="_blank" href="http://www.xinhuanet.com/video/xbsp/zgzgdh/chzc.htm">参会注册</a></li>' +
+                '<li><a target="_blank" href="http://www.xinhuanet.com/video/xbsp/zgzgdh/chzc.htm">媒体注册</a></li></ul></div></div></div>';
             $('body').prepend(header);
         },
         initFooter:function(){
@@ -56,5 +33,5 @@ $(document).ready(function(){
             $('body').append(footer);
         }
     };
-    new Guests().init();
+    new Home().init();
 });
