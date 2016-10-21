@@ -170,10 +170,10 @@
 /**/
 .media .inline{margin-top: 50px;}
 .media li{width: 11.1111%;display: inline-block;float: left;}
-.media .icon{width: 110px;height: 52px;margin: 0 auto;background: url("http://www.xinhuanet.com/video/xhsp/zgzgdh/img/h-bg7.png")no-repeat center;}
+.media .icon{width: 110px;height: 52px;margin: 0 auto;background: url("../img/h-bg7.png")no-repeat center;}
 .media .sina{background-position: 0 0;}
-.media .ali{background-position: -120px 0;}
-.media .yahoo{background-position: -250px 0;}
+.media .ali{background-position: -110px 0;}
+.media .yahoo{background-position: -220px 0;}
 .media .people{background-position: -376px 0;}
 .media .baidu{background-position: -506px 0;}
 .media .sohu{background-position: -636px 0;}
