@@ -22,6 +22,8 @@ ul.inline li{
 }
 .bg_white{background-color: #FFFFFF;}
 .color_white{color: #ffffff;}
+.color_green{color: green;}
+.color_red{color: red;}
 .font_14{font-size: 14px;}
 .fr{float: right;}
 .fl{float: left;}

@@ -15,8 +15,8 @@
 	width: 100%;
 	border: 1px solid #394c5f;
 }
-.form input{color: #7c7b7b;}
-.form input[type="submit"]{
+.form input{color: #7c7b7b;text-indent: 1em;}
+.form input[type="button"]{
 	color: white;
 	font-size: 18px;
 	font-weight: bold;
