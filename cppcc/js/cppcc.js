@@ -111,7 +111,8 @@
                 setPosition(start);
             }else{
                 clearInterval(tick);
-                //Animation.rotation();
+                // setPosition(countPosition(64));
+                // Animation.rotation();
                 randomMove();
             }
         },1000/fps);
@@ -119,7 +120,7 @@
     function setPosition(array){
         wheels.each(function(v, k){
             $(this).css('left', array[v].left).css('top', array[v].top);
-            array[v].left>550?$(this).addClass('on'):$(this).removeClass('on');/*判断是否进入了focus内*/
+            array[v].left>520?$(this).addClass('on'):$(this).removeClass('on');/*判断是否进入了focus内*/
         });
     }
     function countPosition(reg){
@@ -140,5 +141,4 @@
         }, 5000);
     }
     initSkyWheel();
-
 })(this);
