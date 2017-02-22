@@ -3,14 +3,14 @@ body{font-family: "Microsoft Yahei" , "Helvetica Neue", Helvetica, STHeiTi, Aria
 .part-l{float: left;}
 .part-r{float: right;}
 
-.bo-chat{width: 328px;height: 691px;background: url("../img/bg_repeat_03.png")repeat;position: relative;float: left;}
+.bo-chat{width: 328px;height: 691px;background: url("../img/bg_repeat_03.png")repeat;position: relative;float: left;z-index: 50;}
 .bo-chat-bg{width: 100%;height: 100%;background: url("../img/mobile.png")no-repeat 100% 100%;z-index: 10;position: absolute;}
 .bo-chat-box{width: 305px;height: 506px;overflow: hidden;position: absolute;top: 114px;left: 12px;}
 .bo-chat-item{overflow: hidden;zoom: 1;height: 36px;padding:5px 10px;}
 .bo-chat-list{list-style: none;z-index: 0;}
 .chat-img{width: 36px;height: 100%;border-radius: 50%;overflow: hidden;}
 .chat-img>img{width: 100%;}
-.chat-msg{background-color: red;height: 100%;border-radius: 18px;margin-left: 8px;}
+.chat-msg{background-color: #cc3333;height: 100%;border-radius: 18px;margin-left: 8px;}
 .chat-msg>span{
     display: block;
     line-height: 36px;
@@ -23,9 +23,29 @@ body{font-family: "Microsoft Yahei" , "Helvetica Neue", Helvetica, STHeiTi, Aria
     overflow: hidden;
     color: white;
 }
-.bo-skywheel{position: relative;width: 680px;height: 680px;float: left;margin-left: 100px;}
+/*sky wheel*/
+.bo-skywheel{position: relative;width: 680px;height: 680px;float: left;margin-left: -200px;z-index: 40;}
 .bo-wheel-box{list-style: none;width: 100%;height: 100%;}
-.bo-wheel-item{width: 110px;height: 110px;border-radius: 50%;border: 2px solid #ededed;text-align: center;line-height: 110px;position: absolute;}
-.bo-wheel-item.on{background-color: red;width: 160px;height: 160px;}
+.bo-wheel-img{position: absolute;left: 190px;top: 190px;width: 300px;height: 300px;border: 2px solid #000000;border-radius: 50%;}
+.bo-wheel-item{
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    text-align: center;
+    line-height: 115px;
+    left: 282px;
+    top: 282px;
+}
+.bo-wheel-bg{
+    position: relative;
+    background: url("../img/bg-circle.png") no-repeat;
+    width: 115px;
+    height: 115px;
+    top: -115px;
+    left: 0;
+    z-index: -10;
+}
+.bo-wheel-focus{width: 158px;height: 158px;position: absolute;left: 543px;top: 260px;background:url("../img/bg-focus.png") no-repeat;}
+.bo-wheel-item.on{border: none;background: none;}
 .bo-wheel-item.on>a{color: white;}
 .bo-wheel-item>a{text-decoration: none;color: #000000;font-weight: bold;}
