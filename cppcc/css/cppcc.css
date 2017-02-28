@@ -21,7 +21,7 @@ a{text-decoration: none;}
 .bo-topic-list a{color: #000;}
 /* chat box */
 .bo-chat{width: 328px;height: 691px;background: url("../img/bg_repeat_03.png")repeat;position: relative;float: left;z-index: 50;margin-left: 28px;}
-.bo-chat-bg{width: 100%;height: 100%;background: url("../img/mobile.png")no-repeat 100% 100%;z-index: 10;position: absolute;}
+.bo-chat-bg{width: 328px;height: 100%;background: url("../img/mobile.png")no-repeat 100% 100%;z-index: 10;position: absolute;}
 .bo-chat-box{width: 305px;height: 506px;overflow: hidden;position: absolute;top: 114px;left: 12px;}
 .bo-chat-item{overflow: hidden;zoom: 1;height: 36px;padding:5px 10px;}
 .bo-chat-list{list-style: none;z-index: 0;}
@@ -43,7 +43,19 @@ a{text-decoration: none;}
 /*sky wheel*/
 .bo-skywheel{position: relative;width: 650px;height: 650px;}
 .bo-wheel-box{list-style: none;width: 100%;height: 100%;}
-.bo-wheel-img{position: absolute;left: 50%;top: 50%;width: 300px;height: 300px;border: 2px solid #000000;border-radius: 50%;margin-top: -150px;margin-left: -150px;}
+.bo-wheel-img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+    overflow: hidden;
+}
+.bo-wheel-img>img{width: 100%;}
 .bo-wheel-item{
     position: absolute;
     width: 115px;
@@ -60,8 +72,18 @@ a{text-decoration: none;}
     height: 115px;
     top: -115px;
     left: 0;
-    z-index: -10;
+    /*z-index: 0;*/
 }
-.bo-wheel-focus{width: 158px;height: 158px;position: absolute;right: 0;top:50%;background:url("../img/bg-focus.png") no-repeat;margin-top: -80px;margin-right: -20px;}
+.bo-wheel-focus{
+    width: 158px;
+    height: 158px;
+    position: absolute;
+    right: 0;
+    top:50%;
+    background:url("../img/bg-focus.png") no-repeat;
+    margin-top: -80px;
+    margin-right: -20px;
+    z-index: 10;
+}
 .bo-wheel-item.on>a{color: white;}
-.bo-wheel-item>a{color: #000000;font-weight: bold;}
+.bo-wheel-item>a{color: #000000;font-weight: bold;position: relative;z-index: 20;}
