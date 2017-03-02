@@ -18,6 +18,7 @@ $(function(){
 	var link = curUrl;
 	var shareInfo = window.shareInfo;
 	shareInfo.title = shareInfo.title||document.title;
+	shareInfo.img = shareInfo.img||'';
 	shareInfo.desc = shareInfo.desc||'你问我答！汇聚你我声音一起上两会~';
 	shareInfo.link = shareInfo.link||curUrl.split('?')[0];
 	ajaxP(url, function(e){
@@ -58,8 +59,6 @@ $(function(){
 		$.get(url, function(data){
 			if(data.code == 0){
 				window.followTag=false;
-				alert("请先关注新华网微信！");
-				location.href = "http://hd.xuan.news.cn/view/zt/mars/guanzhu.html";
 			}
 		}, "jsonp");
 	}
@@ -67,23 +66,27 @@ $(function(){
     initPage();
 });
 function initPage(){
-    new Swiper('.swiper-second', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 5,
-        centeredSlides: true,
-        paginationClickable: true,
-        freeMode: true
+	new Swiper('.swiper-second', {
+		slidesPerView: 5,
+		centeredSlides: true,
+		freeMode: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
     });
-
-    $('.next-page').on('click', function(){
-        $('html').removeClass('screen-full');
-        $('.page1').height($(window).height()).slideUp();
-        //$('.page1').hide();
-    });
-    var billitem = $('.bo-bill .swiper-slide').length;
-    if(billitem>1){
-        new Swiper('.bo-bill',{
-            paginationClickable: true
+	$('.next-page').on('click', function(){
+		if(window.followTag){
+			$('.page1').height($(window).height()).slideUp();
+			$('html').removeClass('screen-full');
+		}else{
+			alert("请先关注新华网微信！");
+			location.href = "http://hd.xuan.news.cn/view/zt/mars/guanzhu.html";
+		}
+	});
+	var billitem = $('.bo-bill .swiper-slide').length;
+	if(billitem>1){
+		new Swiper('.bo-bill',{
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev'
         });
-    }
+	}
 }
