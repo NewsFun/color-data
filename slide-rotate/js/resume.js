@@ -3,7 +3,7 @@
  */
 (function(bo){
     /*常量*/
-    var container = $('#container'), fps = 60, contentbox = $('#data-box'), stage = $('#stage');
+    var SIN = Math.sin, COS = Math.cos, RAD = Math.PI/180,container = $('#container'), fps = 60, contentbox = $('#data-box'), stage = $('#stage');
     /*全局变量*/
     var items = container.children('.piece'),
         w = container.width(),
@@ -21,19 +21,34 @@
         _click = false,
         animateFinish = true;
     var config = {n:len, r:r, a:1, b:0.58, center:center, clock:clock};
+    function _point(x, y){
+        this.x = x;
+        this.y = y;
+    }
+    function countCircle(param){
+        if(!param||param.n<2) return;
+        var num = 360/param.n, arr = [], rot = param.rot||0, clock = param.clock||0;
+        for(var i = 0;i<param.n;i++){
+            var x = COS((num*i-rot-clock)*RAD)*param.r*param.a+param.center.x;
+            var y = SIN((num*i-rot-clock)*RAD)*param.r*param.b+param.center.y;
+            arr.push(new _point(x, y));
+        }
+        return arr;
+    }
     function render(arr){
         items.each(function(k, v){
             $(this).css({
                 "left":~~(arr[k].x),
                 "top":~~(arr[k].y),
                 "z-index":~~(arr[k].y),
-                "transform":'translateZ('+~~(arr[k].y-h/2)*4+'px)'
+                "transform":'translateZ('+~~(arr[k].y-h/2)*4+'px)',
+                "-webkit-transform":'translateZ('+~~(arr[k].y-h/2)*4+'px)'
             });
         });
     }
     function countPosition(reg){
         config.clock = reg;
-        return bo.countCircle(config);
+        return countCircle(config);
     }
     function rotation(rotate){
         animateFinish = false;
@@ -65,7 +80,6 @@
     }
     function animateCallback(rotate){
         animateFinish = true;
-        _click = false;
         getName(rotate);
     }
     function getName(rotate){
@@ -80,10 +94,11 @@
         dataitem.each(function(){
             $(this).data('name') == name?$(this).show():$(this).hide();
         });
+        _click = false;
     }
     function initPage(){
         stageEvent();
-        render(bo.countCircle(config));
+        render(countCircle(config));
         showContent('mp');
         setInterval(function(){
             if(_click) return;
@@ -96,4 +111,4 @@
         });
     }
     initPage();
-})(Bo);
+})();
