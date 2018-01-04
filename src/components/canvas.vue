@@ -5,7 +5,11 @@
 import CD from './color-data';
 
 export default {
-    
+    data(){
+        return {
+            
+        }
+    }
 }
 </script>
 
