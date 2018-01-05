@@ -6,7 +6,6 @@
     </canvas>
 </template>
 <script>
-// import axios from 'axios';
 import Star from './fly-star';
 
 const url = '../resources/flystar.png';
@@ -17,7 +16,10 @@ export default {
     data(){
         return {
             img: null,
-            canvas: null
+            canvas: null,
+            ctx: null,
+            H: window.innerHeight,
+            W: window.innerWidth
         };
     },
     methods:{
@@ -36,29 +38,53 @@ export default {
                 array[i].render();
             }
         },
-        testFn(img){
+        testFn(){
+            let ctx = this.setCanvas();
+            this.drawLine(ctx);
+            // this.drawSingleStar(this.img);
+        },
+        setCanvas(){
             const canvas = document.querySelector('#canvas');
-            const W = window.innerWidth;
-            const H = window.innerHeight;
 
-            canvas.width = W;
-            canvas.height = H;
+            canvas.width = this.W;
+            canvas.height = this.H;
 
             const ctx = canvas.getContext('2d');
-            
-            // let img = document.querySelector('#star');
-            ctx.drawImage(img, 100, 100);
+            this.ctx = ctx;
+            return ctx;
+        },
+        drawLine(ctx){
+            ctx.save();
+            ctx.fillStyle = '#fff';
+            ctx.arc(50, 50, 50, 0, Math.PI*2);
+            ctx.fill();
+            ctx.restore();
+        },
+        drawSingleStar(img){
+            this.ctx.drawImage(img, 100, 100);
+        },
+        imgLoad(img){
+            let me = this;
+            if(img.complete){
+                this.img = img;
+            }else{
+                img.onload = function(){
+                    me.img = this;
+                };
+            }
         }
     },
     mounted(){
-        this.img = document.querySelector('#star');
+        this.testFn();
+        let img = document.querySelector('#star');
+        this.imgLoad(img);
     },
     created(){
-        
+
     },
     watch:{
         img(val){
-            this.testFn(val);
+            this.drawSingleStar(val);
         }
     }
 };

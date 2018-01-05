@@ -60,12 +60,8 @@ class Star {
 
         // this.img = this.imageLoad(option.imgUrl);
     }
-    imageLoad(url){
-        let img = new Image;
-        if(url){
-            img.src = this.imgUrl;
-        }
-        return img;
+    initCanvas(){
+        
     }
     delay() {
         if(this.wait>0){
