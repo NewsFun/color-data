@@ -37,12 +37,13 @@ class Star {
     constructor(arg){
         const stage = new FlyStar();
         const config = {
-            img: null,
             x : 100,
             y : 100,
             vx : 1,
-            vy: 1,
-            wait: 0
+            vy : 1,
+            wait: 0,
+            width: 50,
+            height: 50
         };
         this.ctx = stage.ctx;
 
@@ -54,8 +55,17 @@ class Star {
         this.vy = option.vy;
         this.img = option.img;
         this.wait = option.wait;
-        // this.imgUrl = option.imgUrl;
-        
+        this.width = option.width;
+        this.height = option.height;
+
+        // this.img = this.imageLoad(option.imgUrl);
+    }
+    imageLoad(url){
+        let img = new Image;
+        if(url){
+            img.src = this.imgUrl;
+        }
+        return img;
     }
     delay() {
         if(this.wait>0){
@@ -76,8 +86,8 @@ class Star {
             this.x += this.vx;
             this.y += this.vy;
         }
-        console.log(this.img);
-        this.ctx.drawImage(this.img,this.x,this.y);
+        // console.log(this.ctx);
+        this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     distance(n, details) {
         let dx = n.x - this.x;
