@@ -1,29 +1,61 @@
-const canvas = document.getElementById('canvas');
-const H = window.innerHeight;
-const W = window.innerWidth;
+class FlyStar{
+    constructor(params){
+        const config = {
+            el: '#canvas',
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
 
-canvas.height = H;
-canvas.width = W;
+        let option = Object.assign(config, params);
 
-const ctx = canvas.getContext('2d');
-const img = new Image();
-const stars = [];
-const tars = [{x:100, y:200},{x:400, y:300}];
-img.src='../resources/flystar.png';
-img.onload = function () {
-    initStars();
-    animate();
-};
+        this.option = option;
+        this.canvas = this.initCanvas(option);
+        this.ctx = this.canvas.getContext('2d');
+        this.width = option.width;
+        this.height = option.height;
+    }
+    initCanvas(params){
+        let canvas = document.querySelector(params.el);
+        canvas.width = params.width;
+        canvas.height = params.height;
+        return canvas;
+    }
+    render(ctx){
+        ctx.clearRect(0, 0, this.width, this.height);
+        this.update(ctx);
+    }
+    update(){
+
+    }
+    animate() {
+        this.render(this.ctx);
+        requestAnimationFrame(this.animate);
+    }
+}
+
 class Star {
     constructor(arg){
-        this.img = img;
-        this.x = 0;
-        this.y = 0;
-        this.vx = 1;
-        this.vy = 1;
-        this.wait = 0;
+        const stage = new FlyStar();
+        const config = {
+            img: null,
+            x : 100,
+            y : 100,
+            vx : 1,
+            vy: 1,
+            wait: 0
+        };
+        this.ctx = stage.ctx;
 
-        if(arg) extend(this, arg);
+        let option = Object.assign(config, arg);
+        
+        this.x = option.x;
+        this.y = option.y;
+        this.vx = option.vx;
+        this.vy = option.vy;
+        this.img = option.img;
+        this.wait = option.wait;
+        // this.imgUrl = option.imgUrl;
+        
     }
     delay() {
         if(this.wait>0){
@@ -44,7 +76,8 @@ class Star {
             this.x += this.vx;
             this.y += this.vy;
         }
-        ctx.drawImage(this.img,this.x,this.y);
+        console.log(this.img);
+        this.ctx.drawImage(this.img,this.x,this.y);
     }
     distance(n, details) {
         let dx = n.x - this.x;
@@ -55,31 +88,4 @@ class Star {
     }
 }
 
-function initStars() {
-    stars[0] = new Star({wait:300});
-    stars[1] = new Star({wait:60});
-    drawStars(stars);
-}
-function drawStars(array) {
-    for(var i = 0;i<array.length;i++){
-        array[i].moveTo(tars[i]);
-    }
-}
-function extend(target, obj) {
-    var keys = Object.keys(obj);
-    for(var i = 0;i<keys.length;i++){
-        target[keys[i]] = obj[keys[i]];
-    }
-}
-function run(ctx){
-    ctx.clearRect(0, 0, W, H);
-    drawStars(stars);
-}
-function animate() {
-    run(ctx);
-    requestAnimationFrame(animate);
-}
-const FlyStar = {
-    
-};
-export default FlyStar;
+export default Star;
