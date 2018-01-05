@@ -2,33 +2,30 @@
     <canvas id="canvas">
         <img id="star" 
             src="../resources/flystar.png" 
-            style="display:none" 
             alt="">
     </canvas>
 </template>
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import Star from './fly-star';
 
 const url = '../resources/flystar.png';
-const tars = [{x:100, y:200},{x:400, y:300}];
-var stars = [];
+// const tars = [{x:100, y:200},{x:400, y:300}];
+let stars = [];
 
 export default {
     data(){
         return {
-            img: null
+            img: null,
+            canvas: null
         };
     },
     methods:{
         initPage(){
-            // this.testFn();
             let img = document.querySelector('#star');
-            this.img = img;
-            // this.initStars(img);
+            this.initStars(img);
         },
         initStars(img) {
-            console.log(img);
             stars[0] = new Star({ wait:300, img: img, x:200, y:50 });
             stars[1] = new Star({ wait:60, img: img });
             this.drawStars(stars);
@@ -39,7 +36,7 @@ export default {
                 array[i].render();
             }
         },
-        testFn(){
+        testFn(img){
             const canvas = document.querySelector('#canvas');
             const W = window.innerWidth;
             const H = window.innerHeight;
@@ -49,19 +46,19 @@ export default {
 
             const ctx = canvas.getContext('2d');
             
-            ctx.drawImage(img, 100, 100);  
+            // let img = document.querySelector('#star');
+            ctx.drawImage(img, 100, 100);
         }
     },
     mounted(){
-        this.initPage();
+        this.img = document.querySelector('#star');
     },
     created(){
         
     },
     watch:{
         img(val){
-            console.log(val);
-            this.initStars(val);
+            this.testFn(val);
         }
     }
 };

@@ -86,7 +86,7 @@ class Star {
             this.x += this.vx;
             this.y += this.vy;
         }
-        // console.log(this.ctx);
+        console.log(this.img);
         this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     distance(n, details) {
