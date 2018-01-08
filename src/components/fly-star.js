@@ -57,8 +57,6 @@ class Star {
         this.wait = option.wait;
         this.width = option.width;
         this.height = option.height;
-
-        // this.img = this.imageLoad(option.imgUrl);
     }
     initCanvas(){
         
@@ -75,15 +73,15 @@ class Star {
         let vel = this.distance(position, true);
         this.vx = vel[0]/vel[2];
         this.vy = vel[1]/vel[2];
-        this.render();
+        this.render(this.ctx);
     }
-    render() {
+    render(ctx) {
         if(!this.delay()){
             this.x += this.vx;
             this.y += this.vy;
         }
-        console.log(this.img);
-        this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     distance(n, details) {
         let dx = n.x - this.x;

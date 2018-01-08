@@ -2,14 +2,15 @@
     <canvas id="canvas">
         <img id="star" 
             src="../resources/flystar.png" 
+            style="display:none" 
             alt="">
     </canvas>
 </template>
 <script>
 import Star from './fly-star';
 
-const url = '../resources/flystar.png';
-// const tars = [{x:100, y:200},{x:400, y:300}];
+// const url = '../resources/flystar.png';
+const tars = [{x:100, y:200},{x:400, y:300}];
 let stars = [];
 
 export default {
@@ -24,8 +25,8 @@ export default {
     },
     methods:{
         initPage(){
-            let img = document.querySelector('#star');
-            this.initStars(img);
+            // let img = document.querySelector('#star');
+            this.initStars(this.img);
         },
         initStars(img) {
             stars[0] = new Star({ wait:300, img: img, x:200, y:50 });
@@ -34,14 +35,13 @@ export default {
         },
         drawStars(array) {
             for(var i = 0;i<array.length;i++){
-                // array[i].moveTo(tars[i]);
-                array[i].render();
+                array[i].moveTo(tars[i]);
+                // array[i].render();
             }
         },
         testFn(){
             let ctx = this.setCanvas();
             this.drawLine(ctx);
-            // this.drawSingleStar(this.img);
         },
         setCanvas(){
             const canvas = document.querySelector('#canvas');
@@ -66,16 +66,17 @@ export default {
         imgLoad(img){
             let me = this;
             if(img.complete){
-                this.img = img;
+                me.img = img;
             }else{
                 img.onload = function(){
-                    me.img = this;
+                    me.img = img;
                 };
             }
         }
     },
     mounted(){
-        this.testFn();
+        // this.testFn();
+        // this.ctx = this.setCanvas();
         let img = document.querySelector('#star');
         this.imgLoad(img);
     },
@@ -84,7 +85,8 @@ export default {
     },
     watch:{
         img(val){
-            this.drawSingleStar(val);
+            // this.drawSingleStar(val);
+            this.initStars(val);
         }
     }
 };
