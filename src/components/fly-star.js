@@ -1,18 +1,19 @@
-class FlyStar{
+export class Stage{
     constructor(params){
         const config = {
             el: '#canvas',
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            renderList: []
         };
 
         let option = Object.assign(config, params);
 
         this.option = option;
-        this.canvas = this.initCanvas(option);
-        this.ctx = this.canvas.getContext('2d');
         this.width = option.width;
         this.height = option.height;
+        this.canvas = this.initCanvas(option);
+        this.ctx = this.canvas.getContext('2d');
     }
     initCanvas(params){
         let canvas = document.querySelector(params.el);
@@ -24,8 +25,10 @@ class FlyStar{
         ctx.clearRect(0, 0, this.width, this.height);
         this.update(ctx);
     }
-    update(){
-
+    update(ctx){
+        for(let i = 0;i<this.renderList.length;i++){
+            this.renderList[i](ctx);
+        }
     }
     animate() {
         this.render(this.ctx);
@@ -33,9 +36,8 @@ class FlyStar{
     }
 }
 
-class Star {
+export class Star {
     constructor(arg){
-        const stage = new FlyStar();
         const config = {
             x : 100,
             y : 100,
@@ -45,7 +47,6 @@ class Star {
             width: 50,
             height: 50
         };
-        this.ctx = stage.ctx;
 
         let option = Object.assign(config, arg);
         
@@ -55,11 +56,9 @@ class Star {
         this.vy = option.vy;
         this.img = option.img;
         this.wait = option.wait;
+        this.stage = option.ctx;
         this.width = option.width;
         this.height = option.height;
-    }
-    initCanvas(){
-        
     }
     delay() {
         if(this.wait>0){
@@ -91,5 +90,3 @@ class Star {
         return details ? [dx, dy, d] : d;
     }
 }
-
-export default Star;

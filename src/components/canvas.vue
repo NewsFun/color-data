@@ -7,7 +7,7 @@
     </canvas>
 </template>
 <script>
-import Star from './fly-star';
+import {Stage, Star} from './fly-star';
 
 // const url = '../resources/flystar.png';
 const tars = [{x:100, y:200},{x:400, y:300}];
