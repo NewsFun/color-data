@@ -30,11 +30,11 @@ export class Star {
         }
         return this.wait>0;
     }
-    moveTo(position) {
+    moveTo(ctx, position) {
         let vel = this.distance(position, true);
         this.vx = vel[0]/vel[2];
         this.vy = vel[1]/vel[2];
-        this.render(this.ctx);
+        this.render(ctx);
     }
     render(ctx) {
         if(!this.delay()){

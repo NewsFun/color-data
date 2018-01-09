@@ -6,7 +6,7 @@ export class Stage{
             height: window.innerHeight,
             renderList: []
         };
-
+        
         let option = Object.assign(config, params);
 
         this.option = option;
