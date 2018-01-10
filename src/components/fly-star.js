@@ -8,7 +8,7 @@ export class Stage{
         };
         
         let option = Object.assign(config, params);
-
+        
         this.option = option;
         this.width = option.width;
         this.height = option.height;
@@ -17,8 +17,8 @@ export class Stage{
     }
     initCanvas(params){
         let canvas = document.querySelector(params.el);
-        canvas.width = params.width;
         canvas.height = params.height;
+        canvas.width = params.width;
         return canvas;
     }
     render(ctx){

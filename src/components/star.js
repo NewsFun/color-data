@@ -18,7 +18,6 @@ export class Star {
         this.vy = option.vy;
         this.img = option.img;
         this.wait = option.wait;
-        this.stage = option.ctx;
         this.width = option.width;
         this.height = option.height;
     }
@@ -30,16 +29,19 @@ export class Star {
         }
         return this.wait>0;
     }
-    moveTo(ctx, position) {
+    moveTo(position) {
         let vel = this.distance(position, true);
         this.vx = vel[0]/vel[2];
         this.vy = vel[1]/vel[2];
-        this.render(ctx);
+        return this;
+    }
+    update(){
+        this.x += this.vx;
+        this.y += this.vy;
     }
     render(ctx) {
         if(!this.delay()){
-            this.x += this.vx;
-            this.y += this.vy;
+            this.update();
         }
         
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);

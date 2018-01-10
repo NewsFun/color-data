@@ -1,5 +1,5 @@
 <template>
-    <canvas id="canvas">
+    <canvas id="canvas" ref="canvas">
         <img id="star" 
             src="../resources/flystar.png" 
             style="display:none" 
@@ -17,17 +17,14 @@ export default {
     data(){
         return {
             img: null,
-            canvas: null,
             ctx: null,
-            H: window.innerHeight,
-            W: window.innerWidth
+            stage: null,
+            canvas: null,
+            W: window.innerWidth,
+            H: window.innerHeight
         };
     },
     methods:{
-        initPage(){
-            // let img = document.querySelector('#star');
-            this.initStars(this.img);
-        },
         initStars(img) {
             stars[0] = new Star({ wait:300, img: img, x:200, y:50 });
             stars[1] = new Star({ wait:60, img: img });
@@ -35,8 +32,7 @@ export default {
         },
         drawStars(array) {
             for(var i = 0;i<array.length;i++){
-                array[i].moveTo(tars[i]);
-                // array[i].render();
+                array[i].moveTo(tars[i]).render(this.ctx);
             }
         },
         testFn(){
@@ -44,12 +40,7 @@ export default {
             this.drawLine(ctx);
         },
         setCanvas(){
-            const canvas = document.querySelector('#canvas');
-
-            canvas.width = this.W;
-            canvas.height = this.H;
-
-            const ctx = canvas.getContext('2d');
+            const ctx = new Stage().ctx;
             this.ctx = ctx;
             return ctx;
         },
@@ -59,9 +50,6 @@ export default {
             ctx.arc(50, 50, 50, 0, Math.PI*2);
             ctx.fill();
             ctx.restore();
-        },
-        drawSingleStar(img){
-            this.ctx.drawImage(img, 100, 100);
         },
         imgLoad(img){
             let me = this;
@@ -75,17 +63,15 @@ export default {
         }
     },
     mounted(){
-        // this.testFn();
-        // this.ctx = this.setCanvas();
         let img = document.querySelector('#star');
         this.imgLoad(img);
+        this.ctx = this.setCanvas();
     },
     created(){
 
     },
     watch:{
         img(val){
-            // this.drawSingleStar(val);
             this.initStars(val);
         }
     }
