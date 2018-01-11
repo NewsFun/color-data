@@ -11,7 +11,11 @@ export class Star {
         };
 
         let option = Object.assign(config, arg);
-        
+        this.initData(option);
+
+    }
+    initData(option){
+
         this.x = option.x;
         this.y = option.y;
         this.vx = option.vx;
@@ -20,6 +24,8 @@ export class Star {
         this.wait = option.wait;
         this.width = option.width;
         this.height = option.height;
+
+        if(option.img) this.shape = 'img';
     }
     delay() {
         if(this.wait>0){
@@ -43,8 +49,21 @@ export class Star {
         if(!this.delay()){
             this.update();
         }
-        
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        this.drawShape(ctx);
+    }
+    drawShape(ctx){
+        switch(this.shape){
+            case 'img':
+                ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+                break;
+            case 'square':
+
+                break;
+            case 'circle':
+                
+                break;
+            default: break;
+        }
     }
     distance(n, details) {
         let dx = n.x - this.x;

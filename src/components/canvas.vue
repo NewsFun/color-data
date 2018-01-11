@@ -26,8 +26,8 @@ export default {
     },
     methods:{
         initStars(img) {
-            stars[0] = new Star({ wait:300, img: img, x:200, y:50 });
-            stars[1] = new Star({ wait:60, img: img });
+            stars.push(new Star({ wait:300, img: img, x:200, y:50 }));
+            // stars[1] = new Star({ wait:60, img: img });
             this.drawStars(stars);
         },
         drawStars(array) {
