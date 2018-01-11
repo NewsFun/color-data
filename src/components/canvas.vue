@@ -31,20 +31,25 @@ export default {
             requestAnimationFrame(this.animate);
         },
         initStars(img) {
-            stars.push(new Star({ 
+            let sstar = new Star({ 
                 ctx: this.ctx,
+                // wait: 300,
                 img: img, 
                 x: 200, 
                 ve: 10,
                 y: 50 
-            }));
+            }).setMotion({
+                position: tars[0],
+                type: 'linear'
+            });
 
+            stars.push(sstar);
             // this.drawStars(stars);
             this.animate();
         },
         drawStars(array) {
             for(var i = 0;i<array.length;i++){
-                array[i].moveTo(tars[1]).render();
+                array[i].render();
             }
         },
         testFn(){

@@ -1,4 +1,4 @@
-export class Star {
+class Motion{
     constructor(arg){
         const config = {
             x : 100,
@@ -7,30 +7,28 @@ export class Star {
             vy : 1,
             ve : 1,
             wait: 0,
-            width: 50,
-            height: 50
+            errorRange: 1,
+            distance: null,
+            attention: false
         };
-        this.distance = null;
-        this.errorRange = 1;
-        this.attention = false;
-
+        
         let option = Object.assign(config, arg);
         this.initData(option);
     }
     initData(option){
-
-        this.x = option.x;
-        this.y = option.y;
-        this.vx = option.vx;
-        this.vy = option.vy;
-        this.ve = option.ve;
-        this.img = option.img;
-        this.ctx = option.ctx;
-        this.wait = option.wait;
-        this.width = option.width;
-        this.height = option.height;
-        
-        if(option.img) this.shape = 'img';
+        Object.assign(this, option);
+    }
+    movement(){
+        switch(this.type){
+            case 'linear': 
+                this.rectilinear(this.position).update();
+                break;
+            default: break;
+        }
+        return {
+            x: this.x, 
+            y: this.y
+        };
     }
     delay() {
         if(this.wait>0){
@@ -40,7 +38,7 @@ export class Star {
         }
         return this.wait>0;
     }
-    moveTo(position) {
+    rectilinear(position) {
         let vel = this.getDistance(position, true);
         if(!this.attention) this.attention = this.arrived(vel[2]);
         if(!this.attention){
@@ -55,7 +53,7 @@ export class Star {
     arrived(distance){
         // console.log(distance);
         if(distance<this.errorRange) return true;
-        
+
         if(this.distance===null){
             this.distance = distance;
         }else{
@@ -63,19 +61,63 @@ export class Star {
                 this.distance = null;
                 return true;
             }
-            this.distance = Math.min(this.distance,distance);
+            this.distance = Math.min(this.distance, distance);
         }
         return false;
+    }
+    getDistance(n, details) {
+        let dx = n.x - this.x;
+        let dy = n.y - this.y;
+        let d = Math.sqrt( dx*dx + dy*dy );
+        
+        return details ? [dx, dy, d] : d;
     }
     update(){
         this.x += this.vx;
         this.y += this.vy;
     }
+}
+
+export class Star {
+    constructor(arg){
+        const config = {
+            x : 100,
+            y : 100,
+            width: 50,
+            height: 50
+        };
+        this.motions = [];
+        this.step = null;
+        this.stepNum = 0;
+
+        let option = Object.assign(config, arg);
+        this.initData(option);
+    }
+    initData(option){
+        this.x = option.x;
+        this.y = option.y;
+        this.width = option.width;
+        this.height = option.height;
+        
+        if(option.img) this.shape = 'img';
+    }
+    setMotion(arg){
+        let motion = new Motion(arg);
+        motion.x = this.x;
+        motion.y = this.y;
+        this.motions.push(motion);
+    }
     render() {
-        if(!this.delay()){
-            this.update();
-        }
+        let coord = this.stepBy().movement();
+        this.x = coord.x;
+        this.y = coord.y;
+
         this.drawShape(this.ctx);
+    }
+    stepBy(){
+        let mot = this.motions[this.stepNum];
+        if(mot.attention) this.stepNum+=1;
+        return mot;
     }
     drawShape(ctx){
         switch(this.shape){
@@ -90,12 +132,5 @@ export class Star {
                 break;
             default: break;
         }
-    }
-    getDistance(n, details) {
-        let dx = n.x - this.x;
-        let dy = n.y - this.y;
-        let d = Math.sqrt( dx*dx + dy*dy );
-
-        return details ? [dx, dy, d] : d;
     }
 }
