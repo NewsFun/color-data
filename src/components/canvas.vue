@@ -7,10 +7,10 @@
     </canvas>
 </template>
 <script>
-import {Stage} from './fly-star';
-import {Star} from './star';
+import { Star } from './star';
+import { Stage } from './fly-star';
 
-const tars = [{x:100, y:200},{x:400, y:300}];
+const tars = [{x:200, y:400},{x:500, y:500}];
 let stars = [];
 
 export default {
@@ -25,14 +25,26 @@ export default {
         };
     },
     methods:{
-        initStars(img) {
-            stars.push(new Star({ wait:300, img: img, x:200, y:50 }));
-            // stars[1] = new Star({ wait:60, img: img });
+        animate() {
+            this.ctx.clearRect(0, 0, this.W, this.H);
             this.drawStars(stars);
+            requestAnimationFrame(this.animate);
+        },
+        initStars(img) {
+            stars.push(new Star({ 
+                ctx: this.ctx,
+                img: img, 
+                x: 200, 
+                ve: 10,
+                y: 50 
+            }));
+
+            // this.drawStars(stars);
+            this.animate();
         },
         drawStars(array) {
             for(var i = 0;i<array.length;i++){
-                array[i].moveTo(tars[i]).render(this.ctx);
+                array[i].moveTo(tars[1]).render();
             }
         },
         testFn(){
@@ -40,13 +52,17 @@ export default {
             this.drawLine(ctx);
         },
         setCanvas(){
-            const ctx = new Stage().ctx;
+            let stage = new Stage();
+            let ctx = stage.ctx;
+
+            this.stage = stage;
             this.ctx = ctx;
+
             return ctx;
         },
         drawLine(ctx){
             ctx.save();
-            ctx.fillStyle = '#fff';
+            ctx.fillStyle = '#ffffff';
             ctx.arc(50, 50, 50, 0, Math.PI*2);
             ctx.fill();
             ctx.restore();
