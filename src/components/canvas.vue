@@ -43,14 +43,26 @@ export default {
             requestAnimationFrame(this.animate);
         },
         initStars(img) {
-            let sstar = new Star({ 
+            let star1 = new Star({ 
                 ctx: this.ctx,
                 img: img, 
-                x: 200, 
-                y: 50 
+                coord:{
+                    x: 200, 
+                    y: 50 
+                }
             }).setMotion(moveList);
+
+            let star2 = new Star({ 
+                ctx: this.ctx,
+                img: img, 
+                coord: {
+                    x: 50, 
+                    y: 50 
+                }
+            });
             // console.log(sstar);
-            stars.push(sstar);
+            stars.push(star1);
+            stars.push(star2);
             // this.drawStars(stars);
             this.animate();
         },

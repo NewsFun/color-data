@@ -1,99 +1,12 @@
-class Motion{
-    constructor(arg){
-        const config = {
-            x : 100,
-            y : 100,
-            vx : 1,
-            vy : 1,
-            ve : 1,
-            wait: 0,
-            errorRange: 1,
-            distance: null,
-            attention: false
-        };
-        
-        let option = Object.assign(config, arg);
-        this.initData(option);
-    }
-    // 初始化数据
-    initData(option){
-        Object.assign(this, option);
-    }
-    // 刹车
-    arrived(distance){
-        // console.log(distance);
-        if(distance<this.errorRange) return true;
-
-        if(this.distance===null){
-            this.distance = distance;
-        }else{
-            if(this.distance === distance){
-                this.distance = null;
-                return true;
-            }
-            this.distance = Math.min(this.distance, distance);
-        }
-        return false;
-    }
-    // 暂停
-    delay() {
-        if(this.wait>0){
-            this.wait -= 1;
-        }else{
-            this.wait = 0;
-        }
-        return this.wait>0;
-    }
-    // 获取坐标差和距离
-    getDistance(n, details) {
-        let dx = n.x - this.x;
-        let dy = n.y - this.y;
-        let d = Math.sqrt( dx*dx + dy*dy );
-        
-        return details ? [dx, dy, d] : d;
-    }
-    // 运动流程控制
-    movement(){
-        if(!this.delay()) this.selectMoveType();
-        return {
-            x: this.x, 
-            y: this.y
-        };
-    }
-    // 直线运动
-    rectilinear(position) {
-        let vel = this.getDistance(position, true);
-        if(!this.attention) this.attention = this.arrived(vel[2]);
-        if(!this.attention){
-            this.vx = vel[0]/vel[2]*this.ve;
-            this.vy = vel[1]/vel[2]*this.ve;
-        }else{
-            this.vx = 0;
-            this.vy = 0;
-        }
-        return this;
-    }
-    // 路径类型
-    selectMoveType(){
-        switch(this.type){
-            case 'linear': 
-                this.rectilinear(this.position).update();
-                break;
-            default: break;
-        }
-    }
-    // 更新坐标
-    update(){
-        this.x += this.vx;
-        this.y += this.vy;
-    }
-}
+import { Motion } from './motion';
 
 export class Star {
     constructor(arg){
         const config = {
-            x : 100,
-            y : 100,
+            coord:{
+                x : 100,
+                y : 100
+            },
             ctx: null,
             img: null,
             width: 50,
@@ -108,10 +21,9 @@ export class Star {
     }
     // 初始化数据
     initData(option){
-        this.x = option.x;
-        this.y = option.y;
         this.ctx = option.ctx;
         this.img = option.img;
+        this.coord = option.coord;
         this.width = option.width;
         this.height = option.height;
         
@@ -123,25 +35,19 @@ export class Star {
             let config = arg[i];
             let motion = new Motion(config);
             if(i<1){
-                motion.x = this.x;
-                motion.y = this.y;
+                motion.coord = this.coord;
             }else{
-                motion.x = arg[i-1].position.x;
-                motion.y = arg[i-1].position.y;
+                motion.coord = arg[i-1].position;
             }
             this.motions.push(motion);
         }
-        
+
         return this;
     }
     // 渲染
     render() {
         let mot = this.stepBy();
-        if(mot){
-            let coord = mot.movement();
-            this.x = coord.x;
-            this.y = coord.y;
-        }
+        if(mot) this.coord = mot.movement();
         
         this.drawShape(this.ctx);
     }
@@ -155,7 +61,7 @@ export class Star {
     drawShape(ctx){
         switch(this.shape){
             case 'img':
-                ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+                ctx.drawImage(this.img, this.coord.x, this.coord.y, this.width, this.height);
                 break;
             case 'square':
 
