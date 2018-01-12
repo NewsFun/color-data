@@ -11,6 +11,18 @@ import { Star } from './star';
 import { Stage } from './fly-star';
 
 const tars = [{x:200, y:400},{x:500, y:500}];
+const moveList = [
+    {
+        position: tars[0],
+        type: 'linear',
+        wait: 30,
+        ve: 10
+    },{
+        position: tars[1],
+        type: 'linear',
+        ve: 5
+    }
+];
 let stars = [];
 
 export default {
@@ -33,16 +45,11 @@ export default {
         initStars(img) {
             let sstar = new Star({ 
                 ctx: this.ctx,
-                // wait: 300,
                 img: img, 
                 x: 200, 
-                ve: 10,
                 y: 50 
-            }).setMotion({
-                position: tars[0],
-                type: 'linear'
-            });
-
+            }).setMotion(moveList);
+            // console.log(sstar);
             stars.push(sstar);
             // this.drawStars(stars);
             this.animate();
@@ -52,10 +59,6 @@ export default {
                 array[i].render();
             }
         },
-        testFn(){
-            let ctx = this.setCanvas();
-            this.drawLine(ctx);
-        },
         setCanvas(){
             let stage = new Stage();
             let ctx = stage.ctx;
@@ -64,13 +67,6 @@ export default {
             this.ctx = ctx;
 
             return ctx;
-        },
-        drawLine(ctx){
-            ctx.save();
-            ctx.fillStyle = '#ffffff';
-            ctx.arc(50, 50, 50, 0, Math.PI*2);
-            ctx.fill();
-            ctx.restore();
         },
         imgLoad(img){
             let me = this;
