@@ -10,7 +10,12 @@
 import { Star } from './star';
 import { Stage } from './fly-star';
 
-const tars = [{x:200, y:400},{x:500, y:500}];
+const tars = [
+    { x:200, y:400 },
+    { x:500, y:500 },
+    { x:100, y:300 },
+    { x:200, y:50 }
+];
 const moveList = [
     {
         position: tars[0],
@@ -19,6 +24,14 @@ const moveList = [
         ve: 10
     },{
         position: tars[1],
+        type: 'linear',
+        ve: 5
+    },{
+        position: tars[2],
+        type: 'linear',
+        ve: 10
+    },{
+        position: tars[3],
         type: 'linear',
         ve: 5
     }
@@ -60,10 +73,10 @@ export default {
                     y: 50 
                 }
             });
-            // console.log(sstar);
+
             stars.push(star1);
             stars.push(star2);
-            // this.drawStars(stars);
+
             this.animate();
         },
         drawStars(array) {

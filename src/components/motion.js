@@ -23,7 +23,6 @@ export class Motion{
     }
     // 刹车
     arrived(distance){
-        // console.log(distance);
         if(distance<this.errorRange) return true;
 
         if(this.distance===null){
@@ -37,7 +36,7 @@ export class Motion{
         }
         return false;
     }
-    // 暂停
+    // 红灯
     delay() {
         if(this.wait>0){
             this.wait -= 1;
@@ -74,6 +73,8 @@ export class Motion{
     }
     // 路径类型
     selectMoveType(){
+        if(!this.type) console.log('you need defined a "type" to start Motion!');
+        
         switch(this.type){
             case 'linear': 
                 this.rectilinear(this.position).update();
