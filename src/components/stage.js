@@ -5,29 +5,18 @@ export class Stage{
         const config = {
             el: '#canvas',
             width: window.innerWidth,
-            height: window.innerHeight,
-            renderList: []
+            height: window.innerHeight
         };
         
         let option = Object.assign(config, params);
-        
+
+        this.renderList= {};
         this.option = option;
         this.width = option.width;
         this.height = option.height;
         this.canvas = this.initCanvas(option);
         this.ctx = this.canvas.getContext('2d');
-    }
-    setActors(option){
-        const stageMsg = {
-            maxWidth: this.width,
-            maxHeight: this.height
-        };
-        const actorMsg = Object.assign(stageMsg, option);
-        let actor = new Star(actorMsg);
-        this.renderList[option.key] = actor;
-    }
-    getActors(key){
-        return this.renderList[key];
+        
     }
     initCanvas(option){
         let canvas = document.querySelector(option.el);
@@ -36,17 +25,38 @@ export class Stage{
 
         return canvas;
     }
-    render(ctx){
-        ctx.clearRect(0, 0, this.width, this.height);
+    setActors(option){
+        const stageMsg = {
+            ctx: this.ctx,
+            maxWidth: this.width,
+            maxHeight: this.height
+        };
+        const actorMsg = Object.assign(stageMsg, option);
+        let actor = new Star(actorMsg);
+        this.renderList[option.key] = actor;
+        
+        return actor;
+    }
+    getActors(key){
+        return this.renderList[key];
+    }
+    renderStage(){
+        this.ctx.clearRect(0, 0, this.width, this.height);
         this.update();
     }
     update(){
-        for(let i = 0;i<this.renderList.length;i++){
-            this.renderList[i].render();
+        let keys = Object.keys(this.renderList);
+        for(let i = 0;i<keys.length;i++){
+            let actor = this.renderList[keys[i]];
+            actor.render();
         }
     }
     animate() {
-        this.render(this.ctx);
-        requestAnimationFrame(this.animate);
+        const self = this;
+        const anim = ()=>{
+            self.renderStage();
+            requestAnimationFrame(anim);
+        };
+        anim();
     }
 }

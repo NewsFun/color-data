@@ -59,8 +59,8 @@ export class Motion{
         return this.coord;
     }
     // 直线运动
-    rectilinear(position) {
-        let vel = this.getDistance(position, true);
+    rectilinear(endPos) {
+        let vel = this.getDistance(endPos, true);
         if(!this.attention) this.attention = this.arrived(vel[2]);
         if(!this.attention){
             this.vx = vel[0]/vel[2]*this.ve;
@@ -99,7 +99,7 @@ export class Motion{
         
         switch(this.type){
             case 'linear': 
-                this.rectilinear(this.position).update();
+                this.rectilinear(this.endPos).update();
                 break;
             case 'bounce':
                 this.bounce().update();

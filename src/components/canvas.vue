@@ -8,7 +8,7 @@
 </template>
 <script>
 import { Star } from './star';
-import { Stage } from './fly-star';
+import { Stage } from './stage';
 
 const tars = [
     { x:200, y:400 },
@@ -18,20 +18,20 @@ const tars = [
 ];
 const moveList = [
     {
-        position: tars[0],
+        endPos: tars[0],
         type: 'linear',
         wait: 30,
         ve: 10
     },{
-        position: tars[1],
+        endPos: tars[1],
         type: 'linear',
         ve: 5
     },{
-        position: tars[2],
+        endPos: tars[2],
         type: 'linear',
         ve: 10
     },{
-        position: tars[3],
+        endPos: tars[3],
         type: 'linear',
         ve: 5
     }
@@ -50,39 +50,17 @@ export default {
         };
     },
     methods:{
-        animate() {
-            this.ctx.clearRect(0, 0, this.W, this.H);
-            this.drawStars(stars);
-            requestAnimationFrame(this.animate);
-        },
         initStars(img) {
-            let star1 = new Star({ 
-                ctx: this.ctx,
+            let sam = this.stage.setActors({
+                key:'star1',
                 img: img, 
                 coord:{
-                    x: 200, 
-                    y: 50 
+                    x: 200,
+                    y: 50
                 }
             }).setMotion(moveList);
-
-            let star2 = new Star({ 
-                ctx: this.ctx,
-                img: img, 
-                coord: {
-                    x: 50, 
-                    y: 50 
-                }
-            });
-            
-            stars.push(star1);
-            stars.push(star2);
-
-            this.animate();
-        },
-        drawStars(array) {
-            for(var i = 0;i<array.length;i++){
-                array[i].render();
-            }
+            // console.log(sam);
+            this.stage.animate();
         },
         setCanvas(){
             let stage = new Stage();

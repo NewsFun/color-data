@@ -7,8 +7,6 @@ export class Star {
                 x : 100,
                 y : 100
             },
-            ctx: null,
-            img: null,
             width: 50,
             height: 50
         };
@@ -37,7 +35,7 @@ export class Star {
             if(i<1){
                 motion.coord = this.coord;
             }else{
-                motion.coord = arg[i-1].position;
+                motion.coord = arg[i-1].endPos;
             }
             this.motions.push(motion);
         }
