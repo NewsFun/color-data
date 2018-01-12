@@ -60,14 +60,6 @@ class Motion{
             y: this.y
         };
     }
-    selectMoveType(){
-        switch(this.type){
-            case 'linear': 
-                this.rectilinear(this.position).update();
-                break;
-            default: break;
-        }
-    }
     // 直线运动
     rectilinear(position) {
         let vel = this.getDistance(position, true);
@@ -80,6 +72,15 @@ class Motion{
             this.vy = 0;
         }
         return this;
+    }
+    // 路径类型
+    selectMoveType(){
+        switch(this.type){
+            case 'linear': 
+                this.rectilinear(this.position).update();
+                break;
+            default: break;
+        }
     }
     // 更新坐标
     update(){
@@ -105,6 +106,7 @@ export class Star {
         let option = Object.assign(config, arg);
         this.initData(option);
     }
+    // 初始化数据
     initData(option){
         this.x = option.x;
         this.y = option.y;
@@ -115,6 +117,7 @@ export class Star {
         
         if(option.img) this.shape = 'img';
     }
+    // 设置运动路线
     setMotion(arg){
         for(let i = 0;i<arg.length;i++){
             let config = arg[i];
@@ -128,9 +131,10 @@ export class Star {
             }
             this.motions.push(motion);
         }
-
+        
         return this;
     }
+    // 渲染
     render() {
         let mot = this.stepBy();
         if(mot){
@@ -141,11 +145,13 @@ export class Star {
         
         this.drawShape(this.ctx);
     }
+    // 运动步骤控制
     stepBy(){
         let mot = this.motions[this.stepNum];
         if(mot&&mot.attention) this.stepNum+=1;
         return mot;
     }
+    // 渲染类型
     drawShape(ctx){
         switch(this.shape){
             case 'img':
