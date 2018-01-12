@@ -49,12 +49,20 @@ export default {
     },
     methods:{
         initStars(img) {
-            let sam = this.stage.setActors({
+            this.stage.setActors({
                 key:'star1',
                 img: img, 
                 coord:{
                     x: 200,
                     y: 50
+                }
+            }).setMotion(moveList);
+            this.stage.setActors({
+                key:'star2',
+                img: img, 
+                coord:{
+                    x: 100,
+                    y: 100
                 }
             }).setMotion(moveList);
             // console.log(sam);
