@@ -45,7 +45,7 @@ export class Star {
         return this;
     }
     // 渲染
-    render() {
+    render(){
         let mot = this.stepBy();
         if(mot) this.coord = mot.movement();
         

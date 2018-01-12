@@ -73,7 +73,7 @@ export default {
                     y: 50 
                 }
             });
-
+            
             stars.push(star1);
             stars.push(star2);
 

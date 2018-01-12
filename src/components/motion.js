@@ -71,13 +71,38 @@ export class Motion{
         }
         return this;
     }
+    // 直线反弹
+    bounce(minWidth, maxWidth, minHeight, maxHeight){
+
+        if(this.x <= minWidth){
+            this.vx = -this.vx;
+            this.coord.x = minWidth;
+        }
+        if(this.x >= maxWidth){
+            this.vx = -this.vx;
+            this.coord.x = maxWidth;
+        }
+        if(this.y <= minHeight){
+            this.vy = -this.vy;
+            this.coord.y = minHeight;
+        }
+        if(this.y >= maxHeight){
+            this.vy = -this.vy;
+            this.coord.y = maxHeight;
+        }
+
+        return this;
+    }
     // 路径类型
     selectMoveType(){
-        if(!this.type) console.log('you need defined a "type" to start Motion!');
+        if(!this.type) console.error('you need defined a "type" to start Motion!');
         
         switch(this.type){
             case 'linear': 
                 this.rectilinear(this.position).update();
+                break;
+            case 'bounce':
+                this.bounce().update();
                 break;
             default: break;
         }

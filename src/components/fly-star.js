@@ -1,3 +1,5 @@
+import { Star } from './star';
+
 export class Stage{
     constructor(params){
         const config = {
@@ -15,19 +17,32 @@ export class Stage{
         this.canvas = this.initCanvas(option);
         this.ctx = this.canvas.getContext('2d');
     }
-    initCanvas(params){
-        let canvas = document.querySelector(params.el);
-        canvas.height = params.height;
-        canvas.width = params.width;
+    setActors(option){
+        const stageMsg = {
+            maxWidth: this.width,
+            maxHeight: this.height
+        };
+        const actorMsg = Object.assign(stageMsg, option);
+        let actor = new Star(actorMsg);
+        this.renderList[option.key] = actor;
+    }
+    getActors(key){
+        return this.renderList[key];
+    }
+    initCanvas(option){
+        let canvas = document.querySelector(option.el);
+        canvas.height = option.height;
+        canvas.width = option.width;
+
         return canvas;
     }
     render(ctx){
         ctx.clearRect(0, 0, this.width, this.height);
-        this.update(ctx);
+        this.update();
     }
-    update(ctx){
+    update(){
         for(let i = 0;i<this.renderList.length;i++){
-            this.renderList[i](ctx);
+            this.renderList[i].render();
         }
     }
     animate() {
