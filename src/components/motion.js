@@ -90,6 +90,11 @@ export class Motion{
             this.vy = -this.vy;
             this.coord.y = maxHeight;
         }
+        
+        return this;
+    }
+    // 圆周运动
+    circling(center, radius, radian, direction){
 
         return this;
     }
@@ -103,6 +108,9 @@ export class Motion{
                 break;
             case 'bounce':
                 this.bounce().update();
+                break;
+            case 'circling':
+                this.circling().update();
                 break;
             default: break;
         }

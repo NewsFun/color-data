@@ -7,7 +7,6 @@
     </canvas>
 </template>
 <script>
-import { Star } from './star';
 import { Stage } from './stage';
 
 const tars = [
@@ -36,7 +35,6 @@ const moveList = [
         ve: 5
     }
 ];
-let stars = [];
 
 export default {
     data(){
