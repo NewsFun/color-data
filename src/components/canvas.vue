@@ -19,7 +19,7 @@ const moveList = [
     {
         endPos: tars[0],
         type: 'linear',
-        wait: 30,
+        wait: 60,
         ve: 10
     },{
         endPos: tars[1],
@@ -57,6 +57,7 @@ export default {
                     y: 50
                 }
             }).setMotion(moveList);
+            
             this.stage.setActors({
                 key:'star2',
                 img: img, 

@@ -24,13 +24,56 @@ export class Star {
         this.coord = option.coord;
         this.width = option.width;
         this.height = option.height;
-        
+        this.stageWidth = option.stageWidth;
+        this.stageHeight = option.stageHeight;
+
         if(option.img) this.shape = 'img';
+    }
+    // 渲染类型
+    drawShape(ctx){
+        switch(this.shape){
+            case 'img':
+                ctx.drawImage(this.img, this.coord.x, this.coord.y, this.width, this.height);
+                break;
+            case 'square':
+
+                break;
+            case 'round':
+
+                break;
+            default: break;
+        }
+    }
+    // 获取运动边界
+    getBounds(){
+        let rw = this.width/2;
+        let rh = this.height/2;
+        
+        if(this.shape === 'round'){
+            rw = this.radius;
+            rh = this.radius;
+        } 
+        return {
+            minWidth: rw,
+            minHeight: rh,
+            maxWidth: this.stageWidth-rw,
+            maxHeight: this.stageHeight-rh
+        };
+    }
+    // 渲染
+    render(){
+        let mot = this.stepBy();
+        if(mot) this.coord = mot.movement();
+        
+        this.drawShape(this.ctx);
     }
     // 设置运动路线
     setMotion(arg){
+        let stageMsg = this.getBounds();
+
         for(let i = 0;i<arg.length;i++){
-            let config = arg[i];
+            let config = Object.assign({}, stageMsg, arg[i]);
+            // console.log(config);
             let motion = new Motion(config);
             if(i<1){
                 motion.coord = this.coord;
@@ -42,32 +85,10 @@ export class Star {
 
         return this;
     }
-    // 渲染
-    render(){
-        let mot = this.stepBy();
-        if(mot) this.coord = mot.movement();
-        
-        this.drawShape(this.ctx);
-    }
     // 运动步骤控制
     stepBy(){
         let mot = this.motions[this.stepNum];
         if(mot&&mot.attention) this.stepNum+=1;
         return mot;
-    }
-    // 渲染类型
-    drawShape(ctx){
-        switch(this.shape){
-            case 'img':
-                ctx.drawImage(this.img, this.coord.x, this.coord.y, this.width, this.height);
-                break;
-            case 'square':
-
-                break;
-            case 'circle':
-
-                break;
-            default: break;
-        }
     }
 }

@@ -95,7 +95,7 @@ export class Motion{
     }
     // 圆周运动
     circling(center, radius, radian, direction){
-
+        
         return this;
     }
     // 路径类型
@@ -106,8 +106,13 @@ export class Motion{
             case 'linear': 
                 this.rectilinear(this.endPos).update();
                 break;
-            case 'bounce':
-                this.bounce().update();
+            case 'bounce':{
+                let minw = this.minWidth;
+                let maxw = this.maxWidth;
+                let minh = this.minHeight;
+                let maxh = this.maxHeight;
+                this.bounce(minw, maxw, minh, maxh).update();
+            }
                 break;
             case 'circling':
                 this.circling().update();
