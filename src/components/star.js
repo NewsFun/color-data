@@ -14,7 +14,7 @@ export class Star {
         this.step = null;
         this.stepNum = 0;
         this.motions = [];
-        
+
         let option = Object.assign(config, arg);
         this.initData(option);
     }
@@ -30,8 +30,17 @@ export class Star {
 
         if(option.img) this.shape = 'img';
     }
+    // 清楚当前元素
+    clearShape(){
+        let xstart = this.coord.x;
+        let ystart = this.coord.y;
+        let xend = xstart+this.width;
+        let yend = ystart+this.height;
+        this.ctx.clearRect(xstart, ystart, xend, yend);
+    }
     // 渲染类型
     drawShape(ctx){
+        // this.clearShape();
         switch(this.shape){
             case 'img':
                 ctx.drawImage(this.img, this.coord.x, this.coord.y, this.width, this.height);

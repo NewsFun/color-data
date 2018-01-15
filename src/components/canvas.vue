@@ -99,7 +99,7 @@ export default {
         this.ctx = this.setCanvas();
     },
     created(){
-
+        
     },
     watch:{
         img(val){

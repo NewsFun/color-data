@@ -73,7 +73,6 @@ export class Motion{
     }
     // 直线反弹
     bounce(minWidth, maxWidth, minHeight, maxHeight){
-        // console.log(minWidth, maxWidth, minHeight, maxHeight);
         
         if(this.coord.x <= minWidth){
             this.vx = -this.vx;
