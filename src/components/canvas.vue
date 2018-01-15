@@ -57,7 +57,7 @@ export default {
                     y: 50
                 }
             }).setMotion(moveList);
-            
+
             this.stage.setActors({
                 key:'star2',
                 img: img, 
@@ -65,7 +65,11 @@ export default {
                     x: 100,
                     y: 100
                 }
-            }).setMotion(moveList);
+            }).setMotion([{
+                type: 'bounce',
+                vx: 10,
+                vy: 5
+            }]);
             // console.log(sam);
             this.stage.animate();
         },

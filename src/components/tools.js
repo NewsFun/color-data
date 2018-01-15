@@ -9,5 +9,10 @@ export default {
         }
         
         return target;
+    },
+    is(str){
+        return function (obj) {
+            return Object.prototype.toString.call(obj) === '[object '+str+']';
+        };
     }
 };

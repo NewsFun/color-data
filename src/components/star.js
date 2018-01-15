@@ -52,7 +52,7 @@ export class Star {
         if(this.shape === 'round'){
             rw = this.radius;
             rh = this.radius;
-        } 
+        }
         return {
             minWidth: rw,
             minHeight: rh,

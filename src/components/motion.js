@@ -73,20 +73,21 @@ export class Motion{
     }
     // 直线反弹
     bounce(minWidth, maxWidth, minHeight, maxHeight){
-
-        if(this.x <= minWidth){
+        // console.log(minWidth, maxWidth, minHeight, maxHeight);
+        
+        if(this.coord.x <= minWidth){
             this.vx = -this.vx;
             this.coord.x = minWidth;
         }
-        if(this.x >= maxWidth){
+        if(this.coord.x >= maxWidth){
             this.vx = -this.vx;
             this.coord.x = maxWidth;
         }
-        if(this.y <= minHeight){
+        if(this.coord.y <= minHeight){
             this.vy = -this.vy;
             this.coord.y = minHeight;
         }
-        if(this.y >= maxHeight){
+        if(this.coord.y >= maxHeight){
             this.vy = -this.vy;
             this.coord.y = maxHeight;
         }
