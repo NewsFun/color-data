@@ -10,10 +10,11 @@ export class Star {
             width: 50,
             height: 50
         };
-        this.motions = [];
+        
         this.step = null;
         this.stepNum = 0;
-
+        this.motions = [];
+        
         let option = Object.assign(config, arg);
         this.initData(option);
     }
@@ -46,16 +47,16 @@ export class Star {
     }
     // 获取运动边界
     getBounds(){
-        let rw = this.width/2;
-        let rh = this.height/2;
+        let rw = this.width;
+        let rh = this.height;
         
         if(this.shape === 'round'){
             rw = this.radius;
             rh = this.radius;
         }
         return {
-            minWidth: rw,
-            minHeight: rh,
+            minWidth: 0,
+            minHeight: 0,
             maxWidth: this.stageWidth-rw,
             maxHeight: this.stageHeight-rh
         };

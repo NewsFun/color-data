@@ -67,8 +67,8 @@ export default {
                 }
             }).setMotion([{
                 type: 'bounce',
-                vx: 10,
-                vy: 5
+                vx: 2,
+                vy: 2
             }]);
             // console.log(sam);
             this.stage.animate();
