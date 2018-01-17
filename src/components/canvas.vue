@@ -66,9 +66,9 @@ export default {
                     y: 100
                 }
             }).setMotion([{
-                type: 'bounce',
-                vx: 2,
-                vy: 2
+                type: 'circling',
+                endPos: tars[3],
+                vl: 5
             }]);
             // console.log(sam);
             this.stage.animate();
@@ -108,4 +108,7 @@ export default {
     }
 };
 </script>
+<style lang="sass" scoped>
+
+</style>
 

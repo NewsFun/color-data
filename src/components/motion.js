@@ -1,3 +1,8 @@
+const PI = Math.PI;
+const SIN = Math.sin;
+const COS = Math.cos;
+const ROUND = Math.round;
+
 export class Motion{
     constructor(arg){
         const config = {
@@ -8,11 +13,14 @@ export class Motion{
             vx : 1,
             vy : 1,
             ve : 1,
+            vl : 1,
             wait: 0,
-            errorRange: 1,
-            distance: null,
-            attention: false
+            errorRange: 1
         };
+
+        this.t = 0;
+        this.distance = null;
+        this.attention = false;
         
         let option = Object.assign(config, arg);
         this.initData(option);
@@ -20,6 +28,7 @@ export class Motion{
     // 初始化数据
     initData(option){
         Object.assign(this, option);
+        this.radius = ROUND(this.getDistance(this.endPos));
     }
     // 刹车
     arrived(distance){
@@ -55,7 +64,7 @@ export class Motion{
     }
     // 运动流程控制
     movement(){
-        if(!this.delay()) this.selectMoveType();
+        if(!this.attention&&!this.delay()) this.selectMoveType();
         return this.coord;
     }
     // 直线运动
@@ -94,8 +103,10 @@ export class Motion{
         return this;
     }
     // 圆周运动
-    circling(center, radius, radian, direction){
-        
+    circling(center, radian){
+        this.vx = this.vl*SIN(PI*2*this.t)+this.radius;
+        this.vy = this.vl*COS(PI*2*this.t)+this.radius;
+
         return this;
     }
     // 路径类型
@@ -115,7 +126,7 @@ export class Motion{
             }
                 break;
             case 'circling':
-                this.circling().update();
+                this.circling(this.endPos).update();
                 break;
             default: break;
         }
@@ -124,5 +135,6 @@ export class Motion{
     update(){
         this.coord.x += this.vx;
         this.coord.y += this.vy;
+        this.t += 1;
     }
 }
