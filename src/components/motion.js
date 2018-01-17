@@ -104,8 +104,10 @@ export class Motion{
     }
     // 圆周运动
     circling(center, radian){
-        this.vx = this.vl*SIN(PI*2*this.t)+this.radius;
-        this.vy = this.vl*COS(PI*2*this.t)+this.radius;
+
+        this.coord.x = SIN(PI*this.t/180)*this.radius;
+        this.coord.y = COS(PI*this.t/180)*this.radius;
+        this.t+=1;
 
         return this;
     }
@@ -126,7 +128,7 @@ export class Motion{
             }
                 break;
             case 'circling':
-                this.circling(this.endPos).update();
+                this.circling(this.endPos);
                 break;
             default: break;
         }
