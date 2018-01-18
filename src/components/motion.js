@@ -13,7 +13,7 @@ export class Motion{
             vx : 1,
             vy : 1,
             ve : 1,
-            vl : 1,
+            va : 1,
             wait: 0,
             errorRange: 1
         };
@@ -28,7 +28,10 @@ export class Motion{
     // 初始化数据
     initData(option){
         Object.assign(this, option);
-        this.radius = ROUND(this.getDistance(this.endPos));
+        
+        if(this.type==='circling'){
+            this.radius = ROUND(this.getDistance(option.endPos));
+        }
     }
     // 刹车
     arrived(distance){
@@ -103,12 +106,16 @@ export class Motion{
         return this;
     }
     // 圆周运动
-    circling(center, radian){
-
-        this.vx = COS(PI*this.t/180)*this.radius;
-        this.vy = SIN(PI*this.t/180)*this.radius;
-
-        return this;
+    circling(radian){
+        let rads = ~~(radian||0);
+        let rad = PI*this.t/180;
+        // console.log(radian);
+        this.coord.x = this.endPos.x + COS(rad)*this.radius;
+        this.coord.y = this.endPos.y + SIN(rad)*this.radius;
+        if(rads>0&&this.t>=rads){
+            this.attention = true;
+        }
+        this.t += this.va;
     }
     // 路径类型
     selectMoveType(){
@@ -127,7 +134,7 @@ export class Motion{
             }
                 break;
             case 'circling':
-                this.circling(this.endPos).update();
+                this.circling(this.radian);
                 break;
             default: break;
         }

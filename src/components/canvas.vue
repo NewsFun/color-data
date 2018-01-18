@@ -50,7 +50,7 @@ export default {
     methods:{
         initStars(img) {
             let stage = this.stage;
-            let center = { x: 100, y: 101 };
+            let center = { x: 100, y: 150 };
 
             stage.setActors({
                 key:'star1',
@@ -63,7 +63,7 @@ export default {
 
             stage.setActors({
                 key:'star2',
-                img: img, 
+                shape: 'round',
                 coord:{
                     x: 100,
                     y: 100
@@ -71,13 +71,15 @@ export default {
             }).setMotion([{
                 type: 'circling',
                 endPos: center,
-                vl: 5
+                radian: 180,
+                va: 1
             }]);
             stage.setActors({
                 key:'star3',
                 shape: 'round',
                 coord: center
             });
+            // stage.getActors('star2').motions[0].attention = true;
             // console.log(sam);
             this.stage.animate();
         },

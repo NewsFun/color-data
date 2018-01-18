@@ -108,6 +108,7 @@ export class Star {
         let ctx = this.ctx;
         
         ctx.save();
+        ctx.beginPath();
         ctx.fillStyle = '#00ff00';
         ctx.arc(point.x, point.y, 2, 0, Math.PI*2);
         ctx.fill();
