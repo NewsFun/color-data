@@ -49,7 +49,10 @@ export default {
     },
     methods:{
         initStars(img) {
-            this.stage.setActors({
+            let stage = this.stage;
+            let center = { x: 100, y: 101 };
+
+            stage.setActors({
                 key:'star1',
                 img: img, 
                 coord:{
@@ -58,7 +61,7 @@ export default {
                 }
             }).setMotion(moveList);
 
-            this.stage.setActors({
+            stage.setActors({
                 key:'star2',
                 img: img, 
                 coord:{
@@ -67,9 +70,14 @@ export default {
                 }
             }).setMotion([{
                 type: 'circling',
-                endPos: tars[3],
+                endPos: center,
                 vl: 5
             }]);
+            stage.setActors({
+                key:'star3',
+                shape: 'round',
+                coord: center
+            });
             // console.log(sam);
             this.stage.animate();
         },
@@ -91,6 +99,15 @@ export default {
                     me.img = img;
                 };
             }
+        },
+        showPoint(point){
+            let ctx = this.ctx;
+            
+            ctx.save();
+            ctx.fillStyle = '#00ff00';
+            ctx.arc(point.x, point.y, 2, 0, Math.PI*2);
+            ctx.fill();
+            ctx.restore();
         }
     },
     mounted(){

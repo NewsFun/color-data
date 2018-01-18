@@ -105,9 +105,8 @@ export class Motion{
     // 圆周运动
     circling(center, radian){
 
-        this.coord.x = SIN(PI*this.t/180)*this.radius;
-        this.coord.y = COS(PI*this.t/180)*this.radius;
-        this.t+=1;
+        this.vx = COS(PI*this.t/180)*this.radius;
+        this.vy = SIN(PI*this.t/180)*this.radius;
 
         return this;
     }
@@ -119,7 +118,7 @@ export class Motion{
             case 'linear': 
                 this.rectilinear(this.endPos).update();
                 break;
-            case 'bounce':{
+            case 'bounce': {
                 let minw = this.minWidth;
                 let maxw = this.maxWidth;
                 let minh = this.minHeight;
@@ -128,7 +127,7 @@ export class Motion{
             }
                 break;
             case 'circling':
-                this.circling(this.endPos);
+                this.circling(this.endPos).update();
                 break;
             default: break;
         }
