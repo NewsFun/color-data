@@ -65,6 +65,10 @@ export class Motion{
         
         return details ? [dx, dy, d] : d;
     }
+    // 获取初始化夹角
+    getInitAngle(){
+        
+    }
     // 运动流程控制
     movement(){
         if(!this.attention&&!this.delay()) this.selectMoveType();
