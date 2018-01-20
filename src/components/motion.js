@@ -93,6 +93,7 @@ export class Motion{
         
         return this;
     }
+    /* eslint-disable */
     // 圆周运动
     circling(center, radius, radian, direction){
 
