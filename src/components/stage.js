@@ -28,8 +28,8 @@ export class Stage{
     setActors(option){
         const stageMsg = {
             ctx: this.ctx,
-            maxWidth: this.width,
-            maxHeight: this.height
+            stageWidth: this.width,
+            stageHeight: this.height
         };
         const actorMsg = Object.assign(stageMsg, option);
         let actor = new Star(actorMsg);

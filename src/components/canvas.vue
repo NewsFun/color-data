@@ -19,7 +19,7 @@ const moveList = [
     {
         endPos: tars[0],
         type: 'linear',
-        wait: 30,
+        wait: 60,
         ve: 10
     },{
         endPos: tars[1],
@@ -49,7 +49,10 @@ export default {
     },
     methods:{
         initStars(img) {
-            this.stage.setActors({
+            let stage = this.stage;
+            let center = { x: 100, y: 150 };
+
+            stage.setActors({
                 key:'star1',
                 img: img, 
                 coord:{
@@ -57,14 +60,26 @@ export default {
                     y: 50
                 }
             }).setMotion(moveList);
-            this.stage.setActors({
+
+            stage.setActors({
                 key:'star2',
-                img: img, 
+                shape: 'round',
                 coord:{
                     x: 100,
                     y: 100
                 }
-            }).setMotion(moveList);
+            }).setMotion([{
+                type: 'circling',
+                endPos: center,
+                radian: 180,
+                va: 1
+            }]);
+            stage.setActors({
+                key:'star3',
+                shape: 'round',
+                coord: center
+            });
+            // stage.getActors('star2').motions[0].attention = true;
             // console.log(sam);
             this.stage.animate();
         },
@@ -86,6 +101,15 @@ export default {
                     me.img = img;
                 };
             }
+        },
+        showPoint(point){
+            let ctx = this.ctx;
+            
+            ctx.save();
+            ctx.fillStyle = '#00ff00';
+            ctx.arc(point.x, point.y, 2, 0, Math.PI*2);
+            ctx.fill();
+            ctx.restore();
         }
     },
     mounted(){
@@ -94,7 +118,7 @@ export default {
         this.ctx = this.setCanvas();
     },
     created(){
-
+        
     },
     watch:{
         img(val){
@@ -103,4 +127,7 @@ export default {
     }
 };
 </script>
+<style lang="sass" scoped>
+
+</style>
 

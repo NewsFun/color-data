@@ -1,3 +1,8 @@
+const PI = Math.PI;
+const SIN = Math.sin;
+const COS = Math.cos;
+const ROUND = Math.round;
+
 export class Motion{
     constructor(arg){
         const config = {
@@ -8,11 +13,14 @@ export class Motion{
             vx : 1,
             vy : 1,
             ve : 1,
+            va : 1,
             wait: 0,
-            errorRange: 1,
-            distance: null,
-            attention: false
+            errorRange: 1
         };
+
+        this.t = 0;
+        this.distance = null;
+        this.attention = false;
         
         let option = Object.assign(config, arg);
         this.initData(option);
@@ -20,6 +28,10 @@ export class Motion{
     // 初始化数据
     initData(option){
         Object.assign(this, option);
+        
+        if(this.type==='circling'){
+            this.radius = ROUND(this.getDistance(option.endPos));
+        }
     }
     // 刹车
     arrived(distance){
@@ -53,9 +65,13 @@ export class Motion{
         
         return details ? [dx, dy, d] : d;
     }
+    // 获取初始化夹角
+    getInitAngle(){
+        
+    }
     // 运动流程控制
     movement(){
-        if(!this.delay()) this.selectMoveType();
+        if(!this.attention&&!this.delay()) this.selectMoveType();
         return this.coord;
     }
     // 直线运动
@@ -73,20 +89,20 @@ export class Motion{
     }
     // 直线反弹
     bounce(minWidth, maxWidth, minHeight, maxHeight){
-
-        if(this.x <= minWidth){
+        
+        if(this.coord.x <= minWidth){
             this.vx = -this.vx;
             this.coord.x = minWidth;
         }
-        if(this.x >= maxWidth){
+        if(this.coord.x >= maxWidth){
             this.vx = -this.vx;
             this.coord.x = maxWidth;
         }
-        if(this.y <= minHeight){
+        if(this.coord.y <= minHeight){
             this.vy = -this.vy;
             this.coord.y = minHeight;
         }
-        if(this.y >= maxHeight){
+        if(this.coord.y >= maxHeight){
             this.vy = -this.vy;
             this.coord.y = maxHeight;
         }
@@ -95,9 +111,16 @@ export class Motion{
     }
     /* eslint-disable */
     // 圆周运动
-    circling(center, radius, radian, direction){
-
-        return this;
+    circling(radian){
+        let rads = ~~(radian||0);
+        let rad = PI*this.t/180;
+        // console.log(radian);
+        this.coord.x = this.endPos.x + COS(rad)*this.radius;
+        this.coord.y = this.endPos.y + SIN(rad)*this.radius;
+        if(rads>0&&this.t>=rads){
+            this.attention = true;
+        }
+        this.t += this.va;
     }
     // 路径类型
     selectMoveType(){
@@ -107,11 +130,16 @@ export class Motion{
             case 'linear': 
                 this.rectilinear(this.endPos).update();
                 break;
-            case 'bounce':
-                this.bounce().update();
+            case 'bounce': {
+                let minw = this.minWidth;
+                let maxw = this.maxWidth;
+                let minh = this.minHeight;
+                let maxh = this.maxHeight;
+                this.bounce(minw, maxw, minh, maxh).update();
+            }
                 break;
             case 'circling':
-                this.circling().update();
+                this.circling(this.radian);
                 break;
             default: break;
         }
@@ -120,5 +148,6 @@ export class Motion{
     update(){
         this.coord.x += this.vx;
         this.coord.y += this.vy;
+        this.t += 1;
     }
 }
