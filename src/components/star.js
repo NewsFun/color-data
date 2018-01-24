@@ -22,14 +22,6 @@ export class Star {
     // 初始化数据
     initData(option){
         Object.assign(this, option);
-        // this.ctx = option.ctx;
-        // this.img = option.img;
-        // this.shape = option.shape;
-        // this.coord = option.coord;
-        // this.width = option.width;
-        // this.height = option.height;
-        // this.stageWidth = option.stageWidth;
-        // this.stageHeight = option.stageHeight;
 
         if(option.img) this.shape = 'img';
     }

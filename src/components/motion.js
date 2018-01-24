@@ -1,6 +1,7 @@
 const PI = Math.PI;
 const SIN = Math.sin;
 const COS = Math.cos;
+const ASIN = Math.asin;
 const ROUND = Math.round;
 
 export class Motion{
@@ -66,8 +67,11 @@ export class Motion{
         return details ? [dx, dy, d] : d;
     }
     // 获取初始化夹角
-    getInitAngle(){
-        
+    getInitAngle(center){
+        let d = this.getDistance(center, true);
+        let sin = d[0]/d[2];
+        let ang = ASIN(sin);
+        return [ang, d[2]];
     }
     // 运动流程控制
     movement(){
@@ -109,7 +113,6 @@ export class Motion{
         
         return this;
     }
-    /* eslint-disable */
     // 圆周运动
     circling(radian){
         let rads = ~~(radian||0);
