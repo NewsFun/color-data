@@ -33,6 +33,28 @@ export class Star {
 
         if(option.img) this.shape = 'img';
     }
+    // 绘制点
+    drawPoint(point){
+        let ctx = this.ctx;
+        
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = '#00ff00';
+        ctx.arc(point.x, point.y, 2, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+    }
+    // 绘制矩形
+    drawReact(point){
+        let ctx = this.ctx;
+        
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle = '#00ff00';
+        ctx.rect(point.x, point.y, 2, 2);
+        ctx.fill();
+        ctx.restore();
+    }
     // 渲染类型
     drawShape(){
         switch(this.shape){
@@ -40,15 +62,15 @@ export class Star {
                 this.ctx.drawImage(this.img, this.coord.x, this.coord.y, this.width, this.height);
                 break;
             case 'square':
-
+                this.drawReact(this.coord);
                 break;
             case 'round':
-                this.showPoint(this.coord);
+                this.drawPoint(this.coord);
                 break;
             default: break;
         }
     }
-    // 清楚当前元素
+    // 清除当前元素
     erase(){
         let bound = this.getStarBounds();
         let ut = bound.upperLeft;
@@ -102,17 +124,6 @@ export class Star {
         if(mot) this.coord = mot.movement();
 
         this.drawShape();
-    }
-    // 绘制点
-    showPoint(point){
-        let ctx = this.ctx;
-        
-        ctx.save();
-        ctx.beginPath();
-        ctx.fillStyle = '#00ff00';
-        ctx.arc(point.x, point.y, 2, 0, Math.PI*2);
-        ctx.fill();
-        ctx.restore();
     }
     // 设置运动路线
     setMotion(arg){
