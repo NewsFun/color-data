@@ -4,7 +4,7 @@ const COS = Math.cos;
 const ASIN = Math.asin;
 const ROUND = Math.round;
 
-export class Motion{
+export class Motion {
     constructor(arg){
         const config = {
             coord:{
@@ -49,6 +49,40 @@ export class Motion{
         }
         return false;
     }
+    // 直线反弹
+    bounce(minWidth, maxWidth, minHeight, maxHeight){
+        
+        if(this.coord.x <= minWidth){
+            this.vx = -this.vx;
+            this.coord.x = minWidth;
+        }
+        if(this.coord.x >= maxWidth){
+            this.vx = -this.vx;
+            this.coord.x = maxWidth;
+        }
+        if(this.coord.y <= minHeight){
+            this.vy = -this.vy;
+            this.coord.y = minHeight;
+        }
+        if(this.coord.y >= maxHeight){
+            this.vy = -this.vy;
+            this.coord.y = maxHeight;
+        }
+        
+        return this;
+    }
+    // 圆周运动
+    circling(radian=0){
+        let rads = ~~radian;
+        let rad = PI*this.t/180;
+        // console.log(radian);
+        this.coord.x = this.endPos.x + COS(rad)*this.radius;
+        this.coord.y = this.endPos.y + SIN(rad)*this.radius;
+        if(rads>0&&this.t>=rads){
+            this.attention = true;
+        }
+        this.t += this.va;
+    }
     // 红灯
     delay() {
         if(this.wait>0){
@@ -90,40 +124,6 @@ export class Motion{
             this.vy = 0;
         }
         return this;
-    }
-    // 直线反弹
-    bounce(minWidth, maxWidth, minHeight, maxHeight){
-        
-        if(this.coord.x <= minWidth){
-            this.vx = -this.vx;
-            this.coord.x = minWidth;
-        }
-        if(this.coord.x >= maxWidth){
-            this.vx = -this.vx;
-            this.coord.x = maxWidth;
-        }
-        if(this.coord.y <= minHeight){
-            this.vy = -this.vy;
-            this.coord.y = minHeight;
-        }
-        if(this.coord.y >= maxHeight){
-            this.vy = -this.vy;
-            this.coord.y = maxHeight;
-        }
-        
-        return this;
-    }
-    // 圆周运动
-    circling(radian){
-        let rads = ~~(radian||0);
-        let rad = PI*this.t/180;
-        // console.log(radian);
-        this.coord.x = this.endPos.x + COS(rad)*this.radius;
-        this.coord.y = this.endPos.y + SIN(rad)*this.radius;
-        if(rads>0&&this.t>=rads){
-            this.attention = true;
-        }
-        this.t += this.va;
     }
     // 路径类型
     selectMoveType(){

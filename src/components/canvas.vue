@@ -51,7 +51,7 @@ export default {
         initStars(img) {
             let stage = this.stage;
             let center = { x: 100, y: 150 };
-
+            
             stage.setActors({
                 key:'star1',
                 img: img, 

@@ -1,4 +1,7 @@
 import { Motion } from './motion';
+import tools from './tools';
+
+const isArray = tools.is('Array');
 
 export class Star {
     constructor(arg){
@@ -22,7 +25,7 @@ export class Star {
     // 初始化数据
     initData(option){
         Object.assign(this, option);
-
+        this.boundary = this.getStageBounds();
         if(option.img) this.shape = 'img';
     }
     // 绘制点
@@ -119,21 +122,23 @@ export class Star {
     }
     // 设置运动路线
     setMotion(arg){
-        let stageMsg = this.getStageBounds();
-
-        for(let i = 0;i<arg.length;i++){
-            let config = Object.assign({}, stageMsg, arg[i]);
-            // console.log(config);
-            let motion = new Motion(config);
-            if(i<1){
-                motion.coord = this.coord;
-            }else{
-                motion.coord = arg[i-1].endPos;
+        if(isArray(arg)){
+            for(let i = 0;i<arg.length;i++){
+                let ord = arg[i-1]||arg[i];
+                this.setMotionItem(arg[i], ord.coord);
             }
-            this.motions.push(motion);
+        }else{
+            this.setMotionItem(arg);
         }
-
+        
         return this;
+    }
+    // 创建motion对象
+    setMotionItem(arg, coord=this.coord){
+        let config = Object.assign({}, this.boundary, arg);
+        let motion = new Motion(config);
+        motion.coord = coord;
+        this.motions.push(motion);
     }
     // 运动步骤控制
     stepBy(){
